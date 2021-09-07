@@ -7,9 +7,8 @@ const  Login =(props)=>{
         password,
         configPassword,
         ejecutarLogin,
-        ejecutarRegistro,
-        cuenta,
-        confiCuenta,
+        
+        
         emailError,
         passwordError,
   
@@ -37,19 +36,10 @@ const  Login =(props)=>{
                 <p className="errorMsg">{passwordError}</p>
                     <div className="btnContainer">
 
-                    {cuenta ?(
-                        <>
-                        <br/>
+                    
                         <button onClick={ejecutarLogin} class="btn btn-success btn-lg btn-block position-relative  start-50 translate-middle">Iniciar Sesion</button>
-                        <p>No tienes una cuenta?<span onClick={()=> confiCuenta(!cuenta)}>Registrarse</span></p>
-                        </>
-                     ):(
-                        <>
-                        <br/>
-                        <button onClick={ejecutarRegistro} class="btn btn-success btn-lg btn-block position-relative  start-50 translate-middle">Registrarse</button>
-                        <p>Tienes una cuenta?<span onClick={()=> confiCuenta(!cuenta)}>Iniciar Sesion</span></p>                        
-                        </>                        
-                     )}                 
+                        
+                                    
                     </div>
             </div>
         </section>

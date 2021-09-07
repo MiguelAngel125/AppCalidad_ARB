@@ -10,7 +10,7 @@ const App =()=>{
   const[password,configPassword]=useState('');
   const[emailError,configEmailError]=useState('');
   const[passwordError,configPasswordError]=useState('');
-  const[cuenta,confiCuenta]=useState(true);
+  
 
   const borrarInputs=()=>{
     configEmail('');
@@ -44,28 +44,7 @@ const App =()=>{
           });
   };
  
-const ejecutarRegistro=()=>{
-  eliminarErrores();
-  borrarInputs();
-  fire
-  .auth()
-  .createUserWithEmailAndPassword(email,password)
-  .catch((err)=>{
 
-      switch(err.code){
-        case "auth/email-already-in-use":
-        case "auth/invalid-email":
-        
-          configEmailError('Usuario invalido o en uso');
-          
-        break;
-        case "auth/weak-password":
-          configPasswordError('Contraseña incorrecta');
-        break;
-        // no default
-      }  
-        });
-};
 
 const cerrarSesion=()=>{
   fire.auth().signOut();
@@ -96,10 +75,9 @@ useEffect(()=>{
           configEmail={configEmail} 
           password={password} 
           configPassword={configPassword}
-          ejecutarLogin={ejecutarLogin}
-          ejecutarRegistro={ejecutarRegistro}
-          cuenta={cuenta}
-          confiCuenta={confiCuenta}
+          ejecutarLogin={ejecutarLogin}          
+          
+          
           emailError={emailError}
           passwordError={passwordError}
           
