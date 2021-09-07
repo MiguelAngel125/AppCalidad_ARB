@@ -29,3 +29,6 @@ const Navbar=({cerrarSesion}) =>{
 };
 
 export default Navbar;
+
+//https://desarrolloweb.com/articulos/escribir-datos-firebase-javascript.html
+//https://collectednotes.com/malerey/firebase-y-react-para-principiantes-parte-1
