@@ -6,9 +6,7 @@ const  Login =(props)=>{
         configEmail,
         password,
         configPassword,
-        ejecutarLogin,
-        
-        
+        ejecutarLogin,     
         emailError,
         passwordError,
   

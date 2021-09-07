@@ -43,8 +43,6 @@ const App =()=>{
         }  
           });
   };
- 
-
 
 const cerrarSesion=()=>{
   fire.auth().signOut();
@@ -75,9 +73,7 @@ useEffect(()=>{
           configEmail={configEmail} 
           password={password} 
           configPassword={configPassword}
-          ejecutarLogin={ejecutarLogin}          
-          
-          
+          ejecutarLogin={ejecutarLogin}         
           emailError={emailError}
           passwordError={passwordError}
           
