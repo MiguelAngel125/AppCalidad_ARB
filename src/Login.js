@@ -34,12 +34,8 @@ const  Login =(props)=>{
                 onChange={(e)=> configPassword(e.target.value)}
                 placeholder="Contraseña" />
                 <p className="errorMsg">{passwordError}</p>
-                    <div className="btnContainer">
-
-                    
-                        <button onClick={ejecutarLogin} class="btn btn-success btn-lg btn-block position-relative  start-50 translate-middle">Iniciar Sesion</button>
-                        
-                                    
+                    <div className="btnContainer">                    
+                        <button onClick={ejecutarLogin} class="btn btn-success btn-lg btn-block position-relative  start-50 translate-middle">Iniciar Sesion</button>                       
                     </div>
             </div>
         </section>
