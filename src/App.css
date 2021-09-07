@@ -1,0 +1,159 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito", sans-serif;
+  
+}
+
+/*button {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 15px 0;
+  color: #fff;
+  font-size: 16px;
+  letter-spacing: 1px;
+  background: radial-gradient(
+    ellipse at left bottom,
+    rgb(4, 130, 80, 0.9) 0%,
+    rgba(3, 150, 80, 0.9) 59%,
+    rgba(4, 130, 80, 0.9) 100%
+  );
+  cursor: pointer;
+}*/
+
+.login {
+  
+  width: 100%;
+  min-height: 100vh;
+  padding: 0 20px;
+  background: #545555;
+  display: flex;
+  /*background-image: url(http://www.arbolarsa.com.ar/img/slider1.jpg);*/
+  background-size: cover;
+}
+
+.login .loginContainer {
+  padding: 60px;
+  margin: auto;
+  width: 100%;
+  max-width: 500px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: radial-gradient(
+    ellipse at left bottom,
+    rgb(4, 40, 1) 0%,
+    rgba(3, 143, 94, 0.877) 59%,
+    rgba(4, 40, 1, 0.9) 100%
+    
+  );
+  box-shadow: 0 70px 50px -10px rgba(27, 27, 27, 0.8);
+  
+}
+/*rgba(22, 24, 47, 1) 0%,
+    rgba(38, 20, 72, 0.9) 59%,
+    rgba(17, 27, 75, 0.9) 100%*/
+
+.login .loginContainer label {
+  color: white;
+  margin: 10px 0;
+  display: block;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.login .loginContainer input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 19px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.login .loginContainer .btnContainer {
+  width: 100%;
+  padding: 24px 0;
+}
+
+.login .loginContainer .btnContainer p {
+  margin: 14px 10px -30px 0;
+  text-align: right;
+  color: #fff;
+}
+
+.login .loginContainer .btnContainer p span {
+  color: rgb(190, 190, 0);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-left: 5px;
+  cursor: pointer;
+  transition: all 400ms ease-in-out;
+}
+
+.login .loginContainer .btnContainer p span:hover {
+  color: rgb(22, 0, 223);
+}
+
+.login .loginContainer .errorMsg {
+  color: rgb(153, 0, 0);
+  font-size: 16px;
+  
+}
+
+
+h1{
+  font-size:50px;
+  text-align: center;
+  color: rgb(224, 224, 224);
+}
+
+.navbar{
+  background-color: #5455559c;
+}
+
+
+
+
+.form-date {
+  padding: 1px;
+  display: flex;
+  flex-direction:row;
+  }
+
+
+  .calendario[type="date"] {
+    appearance: none;
+    color: #ffffff;
+    font-family: "Helvetica", arial, sans-serif;
+    font-size: 15px;
+    border: 0px solid #ECF0F1;
+    background:#888888;
+    padding: 4px;
+    display: inline-block;
+    visibility: visible;
+    width: 140px;
+    height:43px;
+    border-radius:5px;
+    }
+    .calendario[type="date"][type="date"]:focus {
+    color: #495057;
+    background-color: #d3d3d3;
+    border-color: #80BDFF;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    }
+
+h5{
+  text-align: end;
+  padding-top: 10px;
+  color: rgb(0, 0, 0);
+  
+}
+
+
