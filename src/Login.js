@@ -33,7 +33,7 @@ const  Login =(props)=>{
                 placeholder="Contraseña" />
                 <p className="errorMsg">{passwordError}</p>
                     <div className="btnContainer">                    
-                        <button onClick={ejecutarLogin} class="btn btn-success btn-lg btn-block position-relative  start-50 translate-middle">Iniciar Sesion</button>                       
+                        <button onClick={ejecutarLogin} className="btn btn-success btn-lg btn-block position-relative  start-50 translate-middle">Iniciar Sesion</button>                       
                     </div>
             </div>
         </section>

@@ -89,7 +89,7 @@ h1{
 }
 
 .navbar{
-  background-color: #5455559c;
+  background-color: #2020209c;
 }
 
 .form-date {
@@ -118,6 +118,7 @@ h1{
     border-color: #80BDFF;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    size: 10px;
     }
     
 h5{
@@ -126,5 +127,7 @@ h5{
   color: rgb(0, 0, 0);
   
 }
+
+
 
 

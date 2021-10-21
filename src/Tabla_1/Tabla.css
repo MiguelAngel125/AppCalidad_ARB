@@ -1,0 +1,35 @@
+/*.App{
+    position: relative;
+    
+
+}
+
+
+.bt{
+    background-color:rgb(187, 187, 187);
+        
+    border-style:hidden;
+    width:10px;
+    height: 30px;
+    font-size: 12px;
+    margin-left: 10px;
+}
+.filtro{
+    background-color:rgb(187, 187, 187);       
+    border-style:hidden;
+    width:20px;
+    height: 30px;
+    font-size: 12px;
+    margin-left: 2px;
+}
+thead{
+    position: relative;
+    background-color:rgb(187, 187, 187);       
+    width:100%;
+    height: 50px;
+   
+}
+.fecha{
+    width: 150px;
+}
+*/
