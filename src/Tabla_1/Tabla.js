@@ -1,8 +1,13 @@
-import React from 'react';
+import React,{Fragment} from 'react';
 import { Table} from 'antd';
  
 export const Grilla = ({ props}) => {
     const { id, Nombre, UP , Calibre,Destino,T5,T4,T3,T2,T1}=props;
+
+
+
+
+
 
     const fecha = new Date().toLocaleDateString();   
 
@@ -14,7 +19,7 @@ export const Grilla = ({ props}) => {
 
     let sumTotal = 20;
 
-    let calidad = ((t5 * 5 + t4 * 4 + t3 * 3 + t2 * 2 + t1) / sumTotal).toFixed(1);   
+    let calidad = ((t5 * 5 + t4 * 4 + t3 * 3 + t2 * 2 + t1) / sumTotal).toFixed(2);   
     let cat1=(((sumTotal-t3-t2-t1)*100)/sumTotal).toFixed(0);
     let cat2=(((sumTotal-t5-t4)*100)/sumTotal).toFixed(0);   
 
@@ -171,16 +176,16 @@ const columns = [
       },     
     ];
   
+
+
+
+
+
     return (
-     <div style={{width:1370}}>
-        <Table 
-          columns={columns}
-          dataSource={data}
-          pagination={false}
-          size="small"
-          scroll={{ y: 900 }}
-          />
-      </div>         
+
+
+     
+        <Fragment></Fragment>
             
         
     )
