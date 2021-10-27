@@ -2,7 +2,7 @@ import React,{useState,useEffect} from "react";
 import "./App.css";
 import fire from './conex/fire';
 import Login from './Login';
-import Narbar from "./navbar/navbar";
+import Navbar from "./navbar/navbar";
 
 const App =()=>{
   const[usuario,configUsuario]=useState('');
@@ -66,7 +66,7 @@ useEffect(()=>{
   return (
     <div className="App">
       {usuario?(
-        <Narbar cerrarSesion={cerrarSesion} className="tabla"/>
+        <Navbar cerrarSesion={cerrarSesion} className="tabla"/>
       ):(
         <Login 
           email={email} 

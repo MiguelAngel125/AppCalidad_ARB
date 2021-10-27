@@ -1,14 +1,12 @@
 import React,{useState,useEffect,Fragment} from 'react'
 import {Grilla} from './Tabla';
 import db from '../conex/fire';
-//import "../Tabla_1/Tabla.css";
 import {Table,DatePicker} from 'antd';
-import 'antd/dist/antd.css';
 import { Layout } from 'antd';
 import moment from 'moment';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faSignOutAlt,faImages,faAngleDoubleDown} from '@fortawesome/free-solid-svg-icons'
-
+import {faSignOutAlt,faImages,faAngleDoubleDown} from '@fortawesome/free-solid-svg-icons';
+import 'antd/dist/antd.css';
 
 export const Container=()=>{
 const [calidad, setCalidad]=useState([]);
@@ -46,22 +44,15 @@ let estiloBotonExportar={width:50,height:50,backgroundColor:'#585858',borderColo
 let estiloBotonGaleria={width:50,height:50,backgroundColor:'#585858',borderColor:'#898989',color:'#fff',marginLeft:1}
 let estiloBotonSalir={width:50,height:50,backgroundColor:'red',borderColor:'#898989',color:'#fff',marginLeft:1}
 
+
+
+const {Content } = Layout;
 /*
 let T1 = 0;
 data.forEach((item) => {
   T1 = T1 + item.T5;
 });
-
-let resultadoT1 = T1 / data.length.toString();
-*/
-
-
-
-
-
-
-
-
+let resultadoT1 = T1 / data.length.toString();*/
 //console.log('Data', data);
 
 
@@ -84,11 +75,15 @@ calidad.forEach(item => {
     let cat1=(((sumTotal-t3-t2-t1)*100)/sumTotal).toFixed(0).toString();
     let cat2=(((sumTotal-t5-t4)*100)/sumTotal).toFixed(0).toString(); 
 
+let fecha=new Date().toLocaleDateString();
+
+
+
   data.push({
     key: index,
-    fecha:'fecha',
+    fecha:fecha,
     productor: item.Nombre,
-    finca:'Finca',
+    finca:item.Finca,
     up:item.UP,
     calibre: item.Calibre,
     destino:item.Destino,
@@ -106,8 +101,6 @@ calidad.forEach(item => {
 
 
 const filterNombre = data.map((x) => {
-  //let productor = x.productor === 'JORGE A. MARTINEZ ZUCCARDI' ? 'JMZ' : x.productor;
-
   let productor = '';
   switch (x.productor) {
     case 'JORGE A. MARTINEZ ZUCCARDI': productor = 'JMZ'; break;
@@ -118,15 +111,39 @@ const filterNombre = data.map((x) => {
     default:
       productor = x.productor;
   }
-
  return (
   {text:productor,value: x.productor,}
-  /*
-   text: productor,
-   value: 'Nombre'
-   */)
- ;
+  /*text: productor,value: 'Nombre'*/);
 });
+
+
+const filterFinca = data.map((x) => { 
+let finca = '';
+finca=x.finca;
+ return (
+  {text:finca,value: x.finca,}
+  );
+});
+
+
+const filterUP = data.map((x) => { 
+  let up= '';
+  up=x.up;
+   return (
+    {text:up,value: x.up,}
+    );
+  });
+
+
+  const filterCalibre = data.map((x) => { 
+    let calibre= '';
+    calibre=x.calibre;
+     return (
+      {text:calibre,value: x.calibre,}
+      );
+    });
+  
+
 
 
 
@@ -142,55 +159,31 @@ const columns = [
     dataIndex: 'productor',
     width: 250,
     filters: filterNombre,
-    // [     
-    //   {text: 'JMZ',value: 'Nombre',},      
-    //   {text: 'EHF',value: 'Nombre,'},   
-    // ],
-
-
     onFilter: (value, record) => record.productor.indexOf(value) === 0,
     sorter: (a, b) => a.productor.length - b.productor.length,    
   },  
-
-
   {
     title: 'Finca',
     dataIndex: 'finca',
     width: 85,
-    filters: [
-      {
-        text: 'TU-0400',
-        value: 'TU-0400',
-      },
-     
-      {
-        text: 'TU-0285',
-        value: 'TU-0285',
-      },
-    ],
+    filters:filterFinca,
     onFilter: (value, record) => record.finca.indexOf(value)===0,
+    sorter: (a, b) => a.Finca - b.Finca,   
   },
   {
     title: 'UP',
     dataIndex: 'up',
     width: 100,    
     defaultSortOrder: 'descend',
+    filters:filterUP,
+    onFilter: (value, record) => record.up.indexOf(value)===0,
     sorter: (a, b) => a.UP - b.UP,          
   },
   {
     title: 'Calibre',
     dataIndex: 'calibre',
     width: 90,
-    filters: [
-      {
-        text: '140/00',
-        value: '140/00',
-      },
-      {
-        text: '115/00',
-        value: '115/00',
-      },
-    ],
+    filters: filterCalibre,
     onFilter: (value, record) => record.calibre.indexOf(value) === 0,
   },
   {
@@ -198,9 +191,14 @@ const columns = [
     dataIndex: 'destino',
     width: 85,
     filters: [
+      {text: 'USA',value: 'USA',},
       {
-        text: 'Destino',
-        value: 'Destino',
+        text: 'UE',
+        value: 'UE',
+      },
+      {
+        text: 'OD',
+        value: 'OD',
       },
       
     ],
@@ -212,15 +210,15 @@ const columns = [
     width: 90,
     filters: [
       {
-        text: 'cajonera',
-        value: 'cajonera',
+        text: 'Cajonera',
+        value: 'Cajonera',
       },
       {
-        text: 'bin',
-        value: 'bin',
+        text: 'Bin',
+        value: 'Bin',
       },
     ],
-    onFilter: (value, record) => record.calibre.indexOf(value) === 0,
+    onFilter: (value, record) => record.muestra.indexOf(value) === 0,
   },
   {
     title: 'T5',
@@ -282,62 +280,70 @@ const columns = [
 ];
 
 
+function onChange(pagination, filters, sorter, extra) {
+  console.log('params', pagination, filters, sorter, extra);
+}
 
 
 
 
 return (
   
-    <div className="table-responsive" style={{width:1500,marginLeft:-125}}>
-    <Fragment>      
-      <Layout style={{width:1500}}>
-        <nav style={{ color: 'white', backgroundColor: '#585858', height: 50, fontSize: 25 }}>  
-          <button className='btn' style={estiloBotonGrafico}>{iconGrafico}</button>        
-          {calendario}         
-          <button className='btn'style={estiloBotonExportar}></button>       
-          <button className='btn 'style={estiloBotonGaleria}>{iconImages}</button>
-          <button className='btn'style={estiloBotonSalir}>{iconExit}</button>  
-        </nav>
-        </Layout>
+  <Fragment>
+  <Layout>
+    <nav style={{ color: 'white', backgroundColor: '#585858', height: 50, fontSize: 25 }}>  
+      <button className='btn' style={estiloBotonGrafico}>{iconGrafico}</button>        
+      {calendario}         
+      <button className='btn'style={estiloBotonExportar}></button>       
+      <button className='btn 'style={estiloBotonGaleria}>{iconImages}</button>
+      <button className='btn'style={estiloBotonSalir}>{iconExit}</button>    
+    </nav>
 
-        <nav style={{ backgroundColor: '#707050' }}>
-        <tr>
-            <td style={{width:120}}></td>
-            <td style={{width:270}}>{'resultadoT1'}</td>
-            <td style={{width:110}}>{'Finca'}</td>
-            <td style={{width:110}}>{'UP'}</td>
-            <td style={{width:90}}>{'Calibre'}</td>
-            <td style={{width:95}}>{'Destino'}</td>
-            <td style={{width:55}}>{'t5'}</td>
-            <td style={{width:55}}>{'t4'}</td>
-            <td style={{width:55}}>{'t3'}</td>
-            <td style={{width:55}}>{'t2'}</td>
-            <td style={{width:70}}>{'t1'}</td>
-            <td style={{width:100}}>{'calidad'}</td>
-            <td style={{width:100}}>{'cat1'}/{'cat2'}</td>
-          </tr>
-         </nav>
 
-        
 
-    <Table 
-          columns={columns}
-          dataSource={data}
-          pagination={false}
-          size="small"
-          scroll={{ y: 900 }}
-          />
 
-    
+    <nav style={{ backgroundColor: '#707050' }}>
+    <tr>
+        <td style={{width:120}}></td>
+        <td style={{width:270}}>{'Nombre'}</td>
+        <td style={{width:110}}>{'Finca'}</td>
+        <td style={{width:110}}>{'UP'}</td>
+        <td style={{width:90}}>{'Calibre'}</td>
+        <td style={{width:95}}>{'Destino'}</td>
+        <td style={{width:55}}>{'t5'}</td>
+        <td style={{width:55}}>{'t4'}</td>
+        <td style={{width:55}}>{'t3'}</td>
+        <td style={{width:55}}>{'t2'}</td>
+        <td style={{width:70}}>{'t1'}</td>
+        <td style={{width:100}}>{'calidad'}</td>
+        <td style={{width:100}}>{'cat1'}/{'cat2'}</td>
+      </tr>
+     </nav>
 
 
 
 
 
-      {calidad.map((props)=>(<Grilla key={props.id} props={props}/>))}  
+    <Content>
+      <Table
+        columns={columns}
+        dataSource={data}
+        onChange={onChange}
+        pagination={false}
+        size="small"
+        scroll={{ y: 900}}
+        />
+    </Content>
+  </Layout>
+  {calidad.map((props)=>(<Grilla key={props.id} props={props}/>))}  
+</Fragment>
+
+
+
+
+      
             
-    </Fragment>
-    </div>      
+       
   )
 }
 export default Container;
