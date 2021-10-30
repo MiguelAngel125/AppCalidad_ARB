@@ -1,5 +1,4 @@
-import React,{useState,useEffect,Fragment} from 'react'
-import {Grilla} from './Tabla';
+import React,{useState,useEffect,Fragment} from 'react';
 import db from '../conex/fire';
 import {Table,DatePicker} from 'antd';
 import { Layout } from 'antd';
@@ -47,6 +46,8 @@ let estiloBotonSalir={width:50,height:50,backgroundColor:'red',borderColor:'#898
 
 
 const {Content } = Layout;
+
+
 /*
 let T1 = 0;
 data.forEach((item) => {
@@ -101,7 +102,12 @@ let fecha=new Date().toLocaleDateString();
 
 
 const filterNombre = data.map((x) => {
+
+
+
   let productor = '';
+
+
   switch (x.productor) {
     case 'JORGE A. MARTINEZ ZUCCARDI': productor = 'JMZ'; break;
     case 'ERNESTO FERNANDEZ E HIJOS': productor = 'EHF'; break;
@@ -110,8 +116,12 @@ const filterNombre = data.map((x) => {
     case 'Ledesma S.A.A.I.': productor = 'LED'; break;
     default:
       productor = x.productor;
+
+     
   }
  return (
+
+
   {text:productor,value: x.productor,}
   /*text: productor,value: 'Nombre'*/);
 });
@@ -132,17 +142,60 @@ const filterUP = data.map((x) => {
    return (
     {text:up,value: x.up,}
     );
+});
+
+
+const filterCalibre = data.map((x) => { 
+  let calibre= '';
+  calibre=x.calibre;
+   return (
+    {text:calibre,value: x.calibre,}
+    );
   });
-
-
-  const filterCalibre = data.map((x) => { 
-    let calibre= '';
-    calibre=x.calibre;
-     return (
-      {text:calibre,value: x.calibre,}
-      );
-    });
+      
   
+  const filter = data.map((x) => { 
+    
+   let t5=0;
+   t5=x.t5;
+  
+
+     return (
+
+     t5
+      );
+      
+     });
+   
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -280,12 +333,18 @@ const columns = [
 ];
 
 
+
+
+
+
+
+
+
+
+
 function onChange(pagination, filters, sorter, extra) {
   console.log('params', pagination, filters, sorter, extra);
 }
-
-
-
 
 return (
   
@@ -299,13 +358,10 @@ return (
       <button className='btn'style={estiloBotonSalir}>{iconExit}</button>    
     </nav>
 
-
-
-
     <nav style={{ backgroundColor: '#707050' }}>
     <tr>
         <td style={{width:120}}></td>
-        <td style={{width:270}}>{'Nombre'}</td>
+        <td style={{width:270}}>{'filterR'}</td>
         <td style={{width:110}}>{'Finca'}</td>
         <td style={{width:110}}>{'UP'}</td>
         <td style={{width:90}}>{'Calibre'}</td>
@@ -335,7 +391,11 @@ return (
         />
     </Content>
   </Layout>
-  {calidad.map((props)=>(<Grilla key={props.id} props={props}/>))}  
+  {/*calidad.map((props)=>(<Grilla key={props.id} props={props}/>))*/}  
+
+
+
+  <h1>{'resultadoT1'}/{filter} </h1>
 </Fragment>
 
 
