@@ -4,7 +4,7 @@ import {Table,DatePicker} from 'antd';
 import { Layout } from 'antd';
 import moment from 'moment';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faSignOutAlt,faImages,faAngleDoubleDown} from '@fortawesome/free-solid-svg-icons';
+import {faSignOutAlt,faImages,faAngleDoubleDown,faFileExport, faRedo} from '@fortawesome/free-solid-svg-icons';
 import 'antd/dist/antd.css';
 
 export const Container=()=>{
@@ -35,13 +35,15 @@ format={dateFormat}style={{width:250,marginLeft:100}}/>
 let iconExit=<FontAwesomeIcon icon={faSignOutAlt}/>;
 let iconImages=<FontAwesomeIcon icon={faImages}/>;
 let iconGrafico=<FontAwesomeIcon icon={faAngleDoubleDown}/>;
-
+let iconExportar=<FontAwesomeIcon icon={faFileExport}/>;
+let iconActualizar=<FontAwesomeIcon icon={faRedo}/>
 
 
 let estiloBotonGrafico={width:50,height:50,backgroundColor:'#585858',borderColor:'#898989',color:'#fff'}
-let estiloBotonExportar={width:50,height:50,backgroundColor:'#585858',borderColor:'#898989',color:'#fff',marginLeft:790}
-let estiloBotonGaleria={width:50,height:50,backgroundColor:'#585858',borderColor:'#898989',color:'#fff',marginLeft:1}
-let estiloBotonSalir={width:50,height:50,backgroundColor:'red',borderColor:'#898989',color:'#fff',marginLeft:1}
+let estiloBotonActualizar={width:50,height:50,backgroundColor:'#585858',borderColor:'#898989',color:'#fff',marginLeft:6}
+let estiloBotonExportar={width:50,height:50,backgroundColor:'#585858',borderColor:'#898989',color:'#fff',marginLeft:6}
+let estiloBotonGaleria={width:50,height:50,backgroundColor:'#585858',borderColor:'#898989',color:'#fff',marginLeft:700}
+let estiloBotonSalir={width:50,height:50,backgroundColor:'red',borderColor:'#898989',color:'#fff',marginLeft:6}
 
 
 
@@ -63,6 +65,7 @@ let resultadoT1 = T1 / data.length.toString();*/
 
 let index = 0;
 let data = [];
+
 
 calidad.forEach(item => {
     let t5 = parseInt(item.T5);
@@ -135,7 +138,6 @@ finca=x.finca;
   );
 });
 
-
 const filterUP = data.map((x) => { 
   let up= '';
   up=x.up;
@@ -143,6 +145,7 @@ const filterUP = data.map((x) => {
     {text:up,value: x.up,}
     );
 });
+
 
 
 const filterCalibre = data.map((x) => { 
@@ -154,21 +157,28 @@ const filterCalibre = data.map((x) => {
   });
       
   
-  const filter = data.map((x) => { 
+
+  /*const filter = data.map((x) => { 
     
    let t5=0;
-   t5=x.t5;
-  
+   let total=0
 
+   for(let i=0;i<data.length;i++){
+
+    total=t5+parseInt(x.t5);
+   
+   }
+  
+  
      return (
 
-     t5
+     total
       );
       
      });
    
 
-
+*/
 
 
 
@@ -213,6 +223,7 @@ const columns = [
     width: 250,
     filters: filterNombre,
     onFilter: (value, record) => record.productor.indexOf(value) === 0,
+
     sorter: (a, b) => a.productor.length - b.productor.length,    
   },  
   {
@@ -220,7 +231,10 @@ const columns = [
     dataIndex: 'finca',
     width: 85,
     filters:filterFinca,
+
     onFilter: (value, record) => record.finca.indexOf(value)===0,
+
+    
     sorter: (a, b) => a.Finca - b.Finca,   
   },
   {
@@ -271,7 +285,7 @@ const columns = [
         value: 'Bin',
       },
     ],
-    onFilter: (value, record) => record.muestra.indexOf(value) === 0,
+    onFilter: (value, record) => record.muestra.indexOf(value) === 0,    
   },
   {
     title: 'T5',
@@ -329,7 +343,9 @@ const columns = [
     dataIndex: 'foto',
     width: 50,
     render:()=><button>foto</button>
-  }
+  },
+
+  
 ];
 
 
@@ -339,21 +355,20 @@ const columns = [
 
 
 
-
-
-
 function onChange(pagination, filters, sorter, extra) {
-  console.log('params', pagination, filters, sorter, extra);
+  console.log('parametros', pagination,filters, sorter, extra);
 }
+
 
 return (
   
   <Fragment>
   <Layout>
-    <nav style={{ color: 'white', backgroundColor: '#585858', height: 50, fontSize: 25 }}>  
+    <nav style={{ color: 'white', backgroundColor: '#585858', height: 54, fontSize: 25 }}>  
       <button className='btn' style={estiloBotonGrafico}>{iconGrafico}</button>        
       {calendario}         
-      <button className='btn'style={estiloBotonExportar}></button>       
+      <button className='btn'style={estiloBotonActualizar}>{iconActualizar}</button> 
+      <button className='btn'style={estiloBotonExportar}>{iconExportar}</button>       
       <button className='btn 'style={estiloBotonGaleria}>{iconImages}</button>
       <button className='btn'style={estiloBotonSalir}>{iconExit}</button>    
     </nav>
@@ -395,7 +410,7 @@ return (
 
 
 
-  <h1>{'resultadoT1'}/{filter} </h1>
+  <h1>{}{'filterTabla'} </h1>
 </Fragment>
 
 
