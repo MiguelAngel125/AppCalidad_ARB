@@ -47,30 +47,30 @@ const Grafico=() =>{
   setTemImgSrc(imgSrc);
   setModel(true);
 
-  console.warn(imgSrc);
+  //console.warn(imgSrc);
+  console.log(model)
   }
 
   return( 
     <>
-      <div className={model ? "model open" : "model"}>
+      <div className={model ? "model-open" : "model"}>
         <img src={temimgSrc} alt=''/>
-        </div>
+      </div>
 
       <div className="gallery"> 
           {data.map((item,index)=>{
             return (
-                <div className="pics"  key={index} onClick={()=>getImg(item.i)} >
+                <div className="pics"  key={index} onClick={()=>getImg(item.imgSrc)} >
                   <img src={item.imgSrc} alt='' style={{width:'100%',height:'100%'}}/>
                  </div>
                     )
                     }
             )}
         </div>
-       
+ 
      </>
   );
 };
 
 export default Grafico;
 
-//https://www.youtube.com/watch?v=cDwa_JwuC-w
