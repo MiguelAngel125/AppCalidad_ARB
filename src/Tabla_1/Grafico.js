@@ -1,4 +1,9 @@
 import React,{useState} from 'react';
+
+import CloseIcon from '@material-ui/icons/Close';
+import RotateRightIcon from '@material-ui/icons/RotateRight';
+import RotateLeftIcon from '@material-ui/icons/RotateLeft';
+
 import imagen1 from 'C:/Users/desar/loginc/src/imgs/1.jpg';
 import imagen2 from 'C:/Users/desar/loginc/src/imgs/2.jpg';
 import imagen3 from  'C:/Users/desar/loginc/src/imgs/3.jpg';
@@ -13,10 +18,21 @@ import imagen11 from  'C:/Users/desar/loginc/src/imgs/11.jpg';
 import imagen12 from  'C:/Users/desar/loginc/src/imgs/12.jpg';
 import imagen13 from  'C:/Users/desar/loginc/src/imgs/13.jpg';
 
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
 
 
 
 import '../Tabla_1/grafico.css';
+
+
+
+
+
+
+let estiloBotonRotarLeft={width:50,height:50,backgroundColor:'black',borderColor:'#898989',color:'#fff',marginTop:650,marginRight:300}
+let estiloBotonRotarright={width:50,height:50,backgroundColor:'black',borderColor:'#898989',color:'#fff',marginTop:650,marginRight:1500}
+
 
 const Grafico=() =>{
 
@@ -51,10 +67,22 @@ const Grafico=() =>{
   console.log(model)
   }
 
+
+  
+
+
   return( 
     <>
       <div className={model ? "model-open" : "model"}>
         <img src={temimgSrc} alt=''/>
+        <CloseIcon style={{color: "white"}} onClick={()=>setModel(false)}/>
+
+
+      <RotateRightIcon className='btn'style={estiloBotonRotarright} />
+
+      <RotateLeftIcon className='btn'style={estiloBotonRotarLeft}/>
+
+
       </div>
 
       <div className="gallery"> 
