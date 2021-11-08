@@ -2,12 +2,13 @@ import firebase from 'firebase';
 //
 import 'firebase/app';
 import 'firebase/firestore';
+//import 'firebase/storage';
 //
 
 
 
   var firebaseConfig = {
-    apiKey: "AIzaSyBnv5xqTBUNgR_8aJTNZbV1QQLIxvcL18s",
+  apiKey: "AIzaSyBnv5xqTBUNgR_8aJTNZbV1QQLIxvcL18s",
   authDomain: "login-react-21fd0.firebaseapp.com",
   projectId: "login-react-21fd0",
   storageBucket: "login-react-21fd0.appspot.com",
@@ -20,6 +21,7 @@ import 'firebase/firestore';
 
 //
 let db = fire.firestore();
+//let dbg = fire.storage();
 //db.settings({ timestampsInSnapshot: true, merge: true });
 
 //

@@ -4,11 +4,20 @@ import {Table,DatePicker} from 'antd';
 import { Layout } from 'antd';
 import moment from 'moment';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faSignOutAlt,faImages,faAngleDoubleDown,faFileExport, faRedo} from '@fortawesome/free-solid-svg-icons';
+import {faSignOutAlt,faImages,faAngleDoubleDown,faFileExport, faRedo, faAngleLeft} from '@fortawesome/free-solid-svg-icons';
 import 'antd/dist/antd.css';
+import Galeria from './Galeria';
+
+
+
+
+
 
 export const Container=()=>{
 const [calidad, setCalidad]=useState([]);
+
+
+
 
 useEffect(()=>{
      
@@ -19,7 +28,6 @@ db.firestore().collection('dbcalidad')
         documents.push({id:doc.id, ...doc.data()})           
     });
     setCalidad(documents);
-
 })
 })
 
@@ -37,30 +45,30 @@ let iconImages=<FontAwesomeIcon icon={faImages}/>;
 let iconGrafico=<FontAwesomeIcon icon={faAngleDoubleDown}/>;
 let iconExportar=<FontAwesomeIcon icon={faFileExport}/>;
 let iconActualizar=<FontAwesomeIcon icon={faRedo}/>
+let iconVerFoto=<FontAwesomeIcon icon={faAngleLeft}/>
 
 
 let estiloBotonGrafico={width:50,height:50,backgroundColor:'#585858',borderColor:'#898989',color:'#fff'}
-let estiloBotonActualizar={width:50,height:50,backgroundColor:'#585858',borderColor:'#898989',color:'#fff',marginLeft:6}
-let estiloBotonExportar={width:50,height:50,backgroundColor:'#585858',borderColor:'#898989',color:'#fff',marginLeft:6}
-let estiloBotonGaleria={width:50,height:50,backgroundColor:'#585858',borderColor:'#898989',color:'#fff',marginLeft:700}
-let estiloBotonSalir={width:50,height:50,backgroundColor:'red',borderColor:'#898989',color:'#fff',marginLeft:6}
+let estiloBotonActualizar={width:50,height:50,backgroundColor:'#585858',borderColor:'#898989',color:'#fff',marginLeft:10}
+let estiloBotonExportar={width:50,height:50,backgroundColor:'#585858',borderColor:'#898989',color:'#fff',marginLeft:10}
+let estiloBotonGaleria={width:50,height:50,backgroundColor:'#585858',borderColor:'#898989',color:'#fff',marginLeft:10}
+let estiloBotonSalir={width:50,height:50,backgroundColor:'red',borderColor:'#898989',color:'#fff',marginLeft:10}
+let estiloBotonFoto={width:35,height:35,backgroundColor:'#585858',borderColor:'#898989',color:'#fff'}
+
+const {Content } = Layout;  
 
 
 
-const {Content } = Layout;
-
-
-/*
-let T1 = 0;
-data.forEach((item) => {
-  T1 = T1 + item.T5;
-});
-let resultadoT1 = T1 / data.length.toString();*/
-//console.log('Data', data);
 
 
 
-  
+
+
+
+
+
+
+
 
 
 let index = 0;
@@ -79,13 +87,11 @@ calidad.forEach(item => {
     let cat1=(((sumTotal-t3-t2-t1)*100)/sumTotal).toFixed(0).toString();
     let cat2=(((sumTotal-t5-t4)*100)/sumTotal).toFixed(0).toString(); 
 
-let fecha=new Date().toLocaleDateString();
-
 
 
   data.push({
     key: index,
-    fecha:fecha,
+    fecha:item.Fecha,
     productor: item.Nombre,
     finca:item.Finca,
     up:item.UP,
@@ -99,18 +105,13 @@ let fecha=new Date().toLocaleDateString();
     t1:item.T1,
     calidad:calidad,
     porcentaje:cat1 +"/"+ cat2, 
+    url:item.URL,
   });
   index++;
 });
 
-
 const filterNombre = data.map((x) => {
-
-
-
   let productor = '';
-
-
   switch (x.productor) {
     case 'JORGE A. MARTINEZ ZUCCARDI': productor = 'JMZ'; break;
     case 'ERNESTO FERNANDEZ E HIJOS': productor = 'EHF'; break;
@@ -118,17 +119,12 @@ const filterNombre = data.map((x) => {
     case 'Sucesores de SALOMON JALIL s.r.l.': productor = 'JLI'; break;
     case 'Ledesma S.A.A.I.': productor = 'LED'; break;
     default:
-      productor = x.productor;
-
-     
+      productor = x.productor;     
   }
  return (
-
-
   {text:productor,value: x.productor,}
   /*text: productor,value: 'Nombre'*/);
 });
-
 
 const filterFinca = data.map((x) => { 
 let finca = '';
@@ -146,8 +142,6 @@ const filterUP = data.map((x) => {
     );
 });
 
-
-
 const filterCalibre = data.map((x) => { 
   let calibre= '';
   calibre=x.calibre;
@@ -155,60 +149,51 @@ const filterCalibre = data.map((x) => {
     {text:calibre,value: x.calibre,}
     );
   });
-      
-  
-
-  /*const filter = data.map((x) => { 
-    
-   let t5=0;
-   let total=0
-
-   for(let i=0;i<data.length;i++){
-
-    total=t5+parseInt(x.t5);
-   
-   }
-  
-  
-     return (
-
-     total
-      );
-      
-     });
-   
-
-*/
 
 
 
-
-
- 
+/////////////////////////////
+const photo=data.map((x)=>{
+  let url='';
+  url=x.url
+  return (url)
+})
+////////////////////////////
 
 
 
 
 
 
-    
+let T5 = 0;
+data.forEach((item) => {
+  T5 += parseInt(item.t5);
+});
+let resumenT5 = T5 ;
 
+let T4 = 0;
+data.forEach((item) => {
+  T4 += parseInt(item.t4);
+});
+let resumenT4 = T4 ;
 
+let T3 = 0;
+data.forEach((item) => {
+  T3 += parseInt(item.t3);
+});
+let resumenT3 = T3 ;
 
+let T2 = 0;
+data.forEach((item) => {
+  T2 += parseInt(item.t2);
+});
+let resumenT2 = T2 ;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+let T1 = 0;
+data.forEach((item) => {
+  T1 += parseInt(item.t1);
+});
+let resumenT1 = T1 ;
 
 const columns = [
   {
@@ -231,10 +216,7 @@ const columns = [
     dataIndex: 'finca',
     width: 85,
     filters:filterFinca,
-
-    onFilter: (value, record) => record.finca.indexOf(value)===0,
-
-    
+    onFilter: (value, record) => record.finca.indexOf(value)===0,    
     sorter: (a, b) => a.Finca - b.Finca,   
   },
   {
@@ -259,15 +241,8 @@ const columns = [
     width: 85,
     filters: [
       {text: 'USA',value: 'USA',},
-      {
-        text: 'UE',
-        value: 'UE',
-      },
-      {
-        text: 'OD',
-        value: 'OD',
-      },
-      
+      {text: 'UE',value: 'UE',},
+      {text: 'OD',value: 'OD',},      
     ],
     onFilter: (value, record) => record.destino.indexOf(value) === 0,
   },
@@ -276,14 +251,8 @@ const columns = [
     dataIndex: 'muestra',
     width: 90,
     filters: [
-      {
-        text: 'Cajonera',
-        value: 'Cajonera',
-      },
-      {
-        text: 'Bin',
-        value: 'Bin',
-      },
+      {text: 'Cajonera',value: 'Cajonera',},
+      {text: 'Bin',value: 'Bin',},
     ],
     onFilter: (value, record) => record.muestra.indexOf(value) === 0,    
   },
@@ -342,59 +311,53 @@ const columns = [
     title:'Foto',
     dataIndex: 'foto',
     width: 50,
-    render:()=><button>foto</button>
-  },
+    render:()=><button className="btn" style={estiloBotonFoto} >{iconVerFoto}</button>
 
-  
+
+
+
+
+
+  },  
 ];
-
-
-
-
-
-
-
 
 function onChange(pagination, filters, sorter, extra) {
   console.log('parametros', pagination,filters, sorter, extra);
 }
 
-
-return (
-  
-  <Fragment>
+return (  
+<Fragment>
   <Layout>
     <nav style={{ color: 'white', backgroundColor: '#585858', height: 54, fontSize: 25 }}>  
       <button className='btn' style={estiloBotonGrafico}>{iconGrafico}</button>        
       {calendario}         
       <button className='btn'style={estiloBotonActualizar}>{iconActualizar}</button> 
-      <button className='btn'style={estiloBotonExportar}>{iconExportar}</button>       
-      <button className='btn 'style={estiloBotonGaleria}>{iconImages}</button>
+      <button className='btn'style={estiloBotonExportar}>{iconExportar}</button> 
+
+      <button className='btn'style={estiloBotonGaleria}>{iconImages}</button>
+
       <button className='btn'style={estiloBotonSalir}>{iconExit}</button>    
     </nav>
 
-    <nav style={{ backgroundColor: '#707050' }}>
+    <div className="table-responsive" style={{ backgroundColor: '#707050',color:"white"}}>
     <tr>
-        <td style={{width:120}}></td>
-        <td style={{width:270}}>{'filterR'}</td>
-        <td style={{width:110}}>{'Finca'}</td>
-        <td style={{width:110}}>{'UP'}</td>
-        <td style={{width:90}}>{'Calibre'}</td>
-        <td style={{width:95}}>{'Destino'}</td>
-        <td style={{width:55}}>{'t5'}</td>
-        <td style={{width:55}}>{'t4'}</td>
-        <td style={{width:55}}>{'t3'}</td>
-        <td style={{width:55}}>{'t2'}</td>
-        <td style={{width:70}}>{'t1'}</td>
-        <td style={{width:100}}>{'calidad'}</td>
+        <td style={{width:155}}></td>
+        <td style={{width:365}}>{'filterR'}</td>
+        <td style={{width:125}}>{'Finca'}</td>
+        <td style={{width:145}}>{'UP'}</td>
+        <td style={{width:135}}>{'Calibre'}</td>
+        <td style={{width:125}}>{'Destino'}</td>
+        <td style={{width:130}}>{'Muestra'}</td>
+        <td style={{width:75}}>{resumenT5/data.length}</td>
+        <td style={{width:75}}>{resumenT4/data.length}</td>
+        <td style={{width:70}}>{resumenT3/data.length}</td>
+        <td style={{width:70}}>{resumenT2/data.length}</td>
+        <td style={{width:115}}>{resumenT1/data.length}</td>
+        <td style={{width:135}}>{'calidad'}</td>
         <td style={{width:100}}>{'cat1'}/{'cat2'}</td>
       </tr>
-     </nav>
-
-
-
-
-
+     </div>
+     
     <Content>
       <Table
         columns={columns}
@@ -405,23 +368,20 @@ return (
         scroll={{ y: 900}}
         />
     </Content>
-  </Layout>
-  {/*calidad.map((props)=>(<Grilla key={props.id} props={props}/>))*/}  
-
-
-
-  <h1>{}{'filterTabla'} </h1>
-</Fragment>
-
-
-
-
+    <h2>
       
-            
+    
+
+</h2>
+  </Layout>  
+
+  
+  
+</Fragment>      
        
   )
 }
-export default Container;
+export default Container  ;
 
 
 
