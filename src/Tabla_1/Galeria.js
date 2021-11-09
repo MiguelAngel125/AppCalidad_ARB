@@ -9,7 +9,7 @@ function App(){
     <>
     <div className="table-responsive">
     <h1 style={{textAlign: 'center'}}>Galeria de imagenes</h1>
-    <button className='btn btn-danger' style={{position:'relative',margin:5,rigth:0}} > Salir </button>
+    <button className='btn btn-danger' style={{position:'relative',margin:5,rigth:0}} > exit </button>
 
 
     </div>
