@@ -8,16 +8,18 @@ import {faSignOutAlt,faImages,faAngleDoubleDown,faFileExport, faRedo, faAngleLef
 import 'antd/dist/antd.css';
 import Galeria from './Galeria';
 
+import fire from '../conex/fire';
 
 
+
+const cerrarSesion=()=>{
+  fire.auth().signOut();
+};
 
 
 
 export const Container=()=>{
 const [calidad, setCalidad]=useState([]);
-
-
-
 
 useEffect(()=>{
      
@@ -30,8 +32,6 @@ db.firestore().collection('dbcalidad')
     setCalidad(documents);
 })
 })
-
-
 
 const {RangePicker } = DatePicker;
 const dateFormat = 'DD/MM/YYYY';
@@ -55,20 +55,7 @@ let estiloBotonGaleria={width:50,height:50,backgroundColor:'#585858',borderColor
 let estiloBotonSalir={width:50,height:50,backgroundColor:'red',borderColor:'#898989',color:'#fff',marginLeft:10}
 let estiloBotonFoto={width:35,height:35,backgroundColor:'#585858',borderColor:'#898989',color:'#fff'}
 
-const {Content } = Layout;  
-
-
-
-
-
-
-
-
-
-
-
-
-
+const {Content } = Layout; 
 
 
 let index = 0;
@@ -82,12 +69,9 @@ calidad.forEach(item => {
     let t2 = parseInt(item.T2);
     let t1 = parseInt(item.T1);
     let sumTotal = 20;
-
     let calidad = ((t5 * 5 + t4 * 4 + t3 * 3 + t2 * 2 + t1) / sumTotal).toFixed(2);   
     let cat1=(((sumTotal-t3-t2-t1)*100)/sumTotal).toFixed(0).toString();
-    let cat2=(((sumTotal-t5-t4)*100)/sumTotal).toFixed(0).toString(); 
-
-
+    let cat2=(((sumTotal-t5-t4)*100)/sumTotal).toFixed(0).toString();
 
   data.push({
     key: index,
@@ -334,9 +318,9 @@ return (
       <button className='btn'style={estiloBotonActualizar}>{iconActualizar}</button> 
       <button className='btn'style={estiloBotonExportar}>{iconExportar}</button> 
 
-      <button className='btn'style={estiloBotonGaleria}>{iconImages}</button>
+      <button className='btn'style={estiloBotonGaleria} >{iconImages}</button>
 
-      <button className='btn'style={estiloBotonSalir}>{iconExit}</button>    
+      <button className='btn'style={estiloBotonSalir} onClick={()=>cerrarSesion()}>{iconExit}</button>    
     </nav>
 
     <div className="table-responsive" style={{ backgroundColor: '#707050',color:"white"}}>
