@@ -6,20 +6,29 @@ import moment from 'moment';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSignOutAlt,faImages,faAngleDoubleDown,faFileExport, faRedo, faAngleLeft} from '@fortawesome/free-solid-svg-icons';
 import 'antd/dist/antd.css';
-import Galeria from './Galeria';
-
 import fire from '../conex/fire';
-
+import Modal from '../componentes/Modal';
+import '../Tabla_1/Tabla.css';
 
 
 const cerrarSesion=()=>{
   fire.auth().signOut();
 };
 
-
-
 export const Container=()=>{
 const [calidad, setCalidad]=useState([]);
+
+
+const[isOpenModal,setIsOpenModal]=useState(false);
+
+  const openModal=()=>{
+    setIsOpenModal(true);
+  }
+
+  const closeModal=()=>{
+    setIsOpenModal(false);
+  }
+
 
 useEffect(()=>{
      
@@ -147,8 +156,6 @@ const photo=data.map((x)=>{
 
 
 
-
-
 let T5 = 0;
 data.forEach((item) => {
   T5 += parseInt(item.t5);
@@ -183,13 +190,13 @@ const columns = [
   {
     title: 'Fecha',
     dataIndex: 'fecha',
-    width: 100,
+    width: '7%',
     defaultSortOrder: 'descend',                
   },
   {
     title: 'Productor',
     dataIndex: 'productor',
-    width: 250,
+    width: '20%',
     filters: filterNombre,
     onFilter: (value, record) => record.productor.indexOf(value) === 0,
 
@@ -198,7 +205,7 @@ const columns = [
   {
     title: 'Finca',
     dataIndex: 'finca',
-    width: 85,
+    width: '8%',
     filters:filterFinca,
     onFilter: (value, record) => record.finca.indexOf(value)===0,    
     sorter: (a, b) => a.Finca - b.Finca,   
@@ -206,7 +213,7 @@ const columns = [
   {
     title: 'UP',
     dataIndex: 'up',
-    width: 100,    
+    width: '8%',    
     defaultSortOrder: 'descend',
     filters:filterUP,
     onFilter: (value, record) => record.up.indexOf(value)===0,
@@ -215,14 +222,14 @@ const columns = [
   {
     title: 'Calibre',
     dataIndex: 'calibre',
-    width: 90,
+    width: '8%',
     filters: filterCalibre,
     onFilter: (value, record) => record.calibre.indexOf(value) === 0,
   },
   {
     title: 'Destino',
     dataIndex: 'destino',
-    width: 85,
+    width: '8%',
     filters: [
       {text: 'USA',value: 'USA',},
       {text: 'UE',value: 'UE',},
@@ -233,7 +240,7 @@ const columns = [
   {
     title: 'Muestra',
     dataIndex: 'muestra',
-    width: 90,
+    width: '8%',
     filters: [
       {text: 'Cajonera',value: 'Cajonera',},
       {text: 'Bin',value: 'Bin',},
@@ -243,35 +250,35 @@ const columns = [
   {
     title: 'T5',
     dataIndex: 't5',
-    width: 50,
+    width: '4%',
     defaultSortOrder: 'descend',
     sorter: (a, b) => a.age - b.age,
   },
   {
     title: 'T4',
     dataIndex: 't4',
-    width: 50,
+    width: '4%',
     defaultSortOrder: 'descend',
     sorter: (a, b) => a.age - b.age,
   },
   {
     title: 'T3',
     dataIndex: 't3',
-    width: 50,
+    width: '4%',
     defaultSortOrder: 'descend',
     sorter: (a, b) => a.age - b.age,
   },
   {
     title: 'T2',
     dataIndex: 't2',
-    width: 50,
+    width: '4%',
     defaultSortOrder: 'descend',
     sorter: (a, b) => a.age - b.age,
   },
   {
     title: 'T1',
     dataIndex: 't1',
-    width: 50,
+    width: '4%',
     defaultSortOrder: 'descend',
     sorter: (a, b) => a.age - b.age,
   },
@@ -318,27 +325,28 @@ return (
       <button className='btn'style={estiloBotonActualizar}>{iconActualizar}</button> 
       <button className='btn'style={estiloBotonExportar}>{iconExportar}</button> 
 
-      <button className='btn'style={estiloBotonGaleria} >{iconImages}</button>
+      <button className='btn'style={estiloBotonGaleria} onClick={()=>openModal()}>{iconImages}</button>
 
       <button className='btn'style={estiloBotonSalir} onClick={()=>cerrarSesion()}>{iconExit}</button>    
     </nav>
 
-    <div className="table-responsive" style={{ backgroundColor: '#707050',color:"white"}}>
+    <div className="nav">
     <tr>
-        <td style={{width:155}}></td>
-        <td style={{width:365}}>{'filterR'}</td>
-        <td style={{width:125}}>{'Finca'}</td>
-        <td style={{width:145}}>{'UP'}</td>
-        <td style={{width:135}}>{'Calibre'}</td>
-        <td style={{width:125}}>{'Destino'}</td>
-        <td style={{width:130}}>{'Muestra'}</td>
-        <td style={{width:75}}>{resumenT5/data.length}</td>
-        <td style={{width:75}}>{resumenT4/data.length}</td>
-        <td style={{width:70}}>{resumenT3/data.length}</td>
-        <td style={{width:70}}>{resumenT2/data.length}</td>
-        <td style={{width:115}}>{resumenT1/data.length}</td>
-        <td style={{width:135}}>{'calidad'}</td>
-        <td style={{width:100}}>{'cat1'}/{'cat2'}</td>
+        <td className='fecha'>Fecha</td>
+        <td className='productor'>{'Productor'}</td>
+        <td className='finca'>{'Finca'}</td>
+        <td className='up'>{'UP'}</td>
+        <td className='calibre'>{'Calibre'}</td>
+        <td className='destino'>{'Destino'}</td>
+        <td className='muestra'>{'Muestra'}</td>
+        <td className='t5'>{resumenT5/data.length}</td>
+        <td className='t4'>{resumenT4/data.length}</td>
+        <td className='t3'>{resumenT3/data.length}</td>
+        <td className='t2'>{resumenT2/data.length}</td>
+        <td className='t1'>{resumenT1/data.length}</td>
+        <td className='calidad'>{'calidad'}</td>
+        <td className='porcentaje'>{'cat1'}/{'cat2'}</td>
+        <td className='f'>{'cat1'}</td>
       </tr>
      </div>
      
@@ -354,7 +362,9 @@ return (
     </Content>
     <h2>
       
-    
+    <Modal 
+  isOpen={!isOpenModal}
+  closeModal={closeModal}/>
 
 </h2>
   </Layout>  

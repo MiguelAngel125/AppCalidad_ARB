@@ -64,6 +64,11 @@ const Visualizador=() =>{
             :rotar===3? "rotar4"            
             :""}>
 
+
+
+
+
+
               <div className="zoom">
               <img src={temimgSrc} alt=''/>
               </div>

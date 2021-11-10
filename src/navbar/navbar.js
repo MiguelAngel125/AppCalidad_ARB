@@ -1,23 +1,21 @@
 import React from 'react';
 import Container from '../Tabla_1/Container';
-import Galeria from '../Tabla_1/Galeria';
+import Grafico from '../componentes/Grafico'
 
+function Navbar() {
 
-
-const Navbar=({cerrarSesion}) =>{
   return( 
+    <>
+      <div className="table-responsive">   
+
+      
+        
+<Container/>
 
 
-<div className="table-responsive" > 
-
-  
-  <Container/>  
-    
-    
-  </div>
- 
-
-);
+      </div>
+  </>
+  );
 };
 
 export default Navbar;

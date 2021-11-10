@@ -1,0 +1,94 @@
+.nav{
+    background-color:rgb(5, 114, 76) ;
+    text-size-adjust:initial;
+    color:#fff;
+    width:100%;
+    height:30px;
+    justify-content: center;
+    align-items: center;
+    display:flex;
+}
+.fecha{
+    position:relative;
+    width:7%;
+    left:0.5px;
+    margin-left:10%
+}
+.productor{
+    position:absolute;
+    width:20%;
+    left:0px;
+    margin-left:7.5%
+}
+.finca{
+    position:absolute;
+    width:5%;
+    left:0px;
+    margin-left:27.2%
+}
+.up{
+    position:absolute;
+    width:5%;
+    left:0px;
+    margin-left:35.2%
+}
+.calibre{
+    position:absolute;
+    width:5%;
+    left:0px;
+    margin-left:43%
+}
+.destino{
+    position:absolute;
+    width:5%;
+    left:0px;
+    margin-left:50.8%
+}
+.muestra{
+    position:absolute;
+    width:5%;
+    left:0px;
+    margin-left:58.7%
+}
+.t5{
+    position:absolute;
+    width:5%;
+    left:0px;
+    margin-left:66.8%
+}
+.t4{
+    position:absolute;
+    width:5%;
+    left:0px;
+    margin-left:70.8%
+}
+.t3{
+    position:absolute;
+    width:5%;
+    left:0px;
+    margin-left:74.8%
+}
+.t2{
+    position:absolute;
+    width:5%;
+    left:0px;
+    margin-left:78.8%
+}
+.t1{
+    position:absolute;
+    width:5%;
+    left:0px;
+    margin-left:82.8%
+}
+.calidad{
+    position:absolute;
+    width:5%;
+    left:0px;
+    margin-left:87.2%
+}
+.porcentaje{
+    position:absolute;
+    width:5%;
+    left:0px;
+    margin-left:92.5%
+}
