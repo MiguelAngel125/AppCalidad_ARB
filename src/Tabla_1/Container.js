@@ -78,7 +78,7 @@ let iconVerFoto=<FontAwesomeIcon icon={faAngleLeft}/>
 let estiloBotonGrafico={width:50,height:50,backgroundColor:'#585858',borderColor:'#898989',color:'#fff'}
 let estiloBotonActualizar={width:50,height:50,backgroundColor:'#585858',borderColor:'#898989',color:'#fff',marginLeft:10}
 let estiloBotonExportar={width:50,height:50,backgroundColor:'#585858',borderColor:'#898989',color:'#fff',marginLeft:10}
-let estiloBotonGaleria={width:50,height:50,backgroundColor:'#585858',borderColor:'#898989',color:'#fff',marginLeft:10}
+let estiloBotonGaleria={width:50,height:50,backgroundColor:'#585858',borderColor:'#898989',color:'#fff',marginLeft:1250}
 let estiloBotonSalir={width:50,height:50,backgroundColor:'red',borderColor:'#898989',color:'#fff',marginLeft:10}
 let estiloBotonFoto={width:35,height:35,backgroundColor:'#585858',borderColor:'#898989',color:'#fff'}
 

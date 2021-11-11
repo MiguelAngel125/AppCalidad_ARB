@@ -11,7 +11,7 @@ const Modal = ({Abierto,cerrarModal}) => {
         <div className={Abierto? "styleModal":"styleModal-open"}>
             <div className="modal_dialog">
                     <h1>Galeria</h1>
-                     <button className="btn btn-danger btnSalir"  onClick={()=>cerrarModal()} >{iconExit}</button>
+                     <button className="btn btn-danger btnSalir" onClick={()=>cerrarModal()} >{iconExit}</button>
                      <Galeria/>
             </div>
         </div>

@@ -1,7 +1,6 @@
 import React from 'react'
 import './ventanaFoto.css';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faTimes} from '@fortawesome/free-solid-svg-icons';
+
 import CloseIcon from '@material-ui/icons/Close';
 
 
@@ -30,7 +29,13 @@ const VentanaFoto = ({mostrarVentana,cerrarVentana}) => {
     
     return (
         <div className={mostrarVentana? "model" : "model-open"}>
+
+
             <CloseIcon style={estiloBotonSalir} onClick={()=>cerrarVentana()}/>
+
+
+            
+
             
             <div className= "zoom">
                     

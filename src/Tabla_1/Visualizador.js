@@ -5,8 +5,6 @@ import RotateLeft from '@material-ui/icons/RotateLeft'
 
 import { FiRotateCcw } from "react-icons/fi";
 
-
-
 import '../Tabla_1/visualizador.css';
 
 import imagen1 from 'C:/Users/desar/loginc/src/imgs/1.jpg';
@@ -41,14 +39,10 @@ import imagen13 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB
 
 
 
-
 let estiloBotonSalir={width:50,height:50,color: "white"};
 let estiloBotonEliminar={width:50,height:50,backgroundColor:'black',color:'#fff',marginTop:600}
 let estiloBotonRotarRight={width:70,height:70,backgroundColor:'grey',color:'#fff',margin:5,marginTop:-30}
-
 let estiloBotonRotar={width:80,height:80,backgroundColor:'black',color:'#fff',marginTop:700}
-
-
 
 
 const Visualizador=() =>{
@@ -75,19 +69,10 @@ const Visualizador=() =>{
   setTemImgSrc(imgSrc);
   setModel(true);    
   }
-  
-    
-
-
  
 const [count, setCount] = useState(0);
-
-
 let grados=count;
-
 let grade={transform:"rotate("+grados+"deg)" ,transition: "all 950ms ease"}
-
-
 
 
 
