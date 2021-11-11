@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import CloseIcon from '@material-ui/icons/Close';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import '../Tabla_1/visualizador.css';
+/*
 import imagen1 from 'C:/Users/desar/loginc/src/imgs/1.jpg';
 import imagen2 from 'C:/Users/desar/loginc/src/imgs/2.jpg';
 import imagen3 from  'C:/Users/desar/loginc/src/imgs/3.jpg';
@@ -15,6 +16,24 @@ import imagen10 from  'C:/Users/desar/loginc/src/imgs/10.jpg';
 import imagen11 from  'C:/Users/desar/loginc/src/imgs/11.jpg';
 import imagen12 from  'C:/Users/desar/loginc/src/imgs/12.jpg';
 import imagen13 from  'C:/Users/desar/loginc/src/imgs/13.jpg';
+*/
+
+import imagen1 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/1.jpg';
+import imagen2 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/2.jpg';
+import imagen3 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/3.jpg';
+import imagen4 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/4.jpg';
+import imagen5 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/5.jpg';
+import imagen6 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/6.jpg';
+import imagen7 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/7.jpg';
+import imagen8 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/8.jpg';
+import imagen9 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/9.jpg';
+import imagen10 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/10.jpg';
+import imagen11 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/11.jpg';
+import imagen12 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/12.jpg';
+import imagen13 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/13.jpg';
+
+
+
 
 
 let estiloBotonSalir={width:50,height:50,color: "white"};
