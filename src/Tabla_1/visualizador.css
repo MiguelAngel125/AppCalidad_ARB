@@ -11,9 +11,9 @@
     -webkit-transition: all 350ms ease;
     transition: all 350ms ease;
     cursor:pointer;
-    margin-bottom:8px;
-    margin-left: -25px;
-    
+    margin-bottom:5px;
+    margin-left: -10px;
+    margin-right: 1px;
 }
 
 .gallery .pics:hover{
@@ -79,6 +79,7 @@
     overflow:hidden;
     z-index: 999;
     transition: all 950ms ease;
+
 }
 
 
@@ -103,24 +104,20 @@
     background-color: rgba(151, 11, 11, 0);
     color: rgb(148, 11, 11);
     cursor: pointer;
+    transition: all 950ms ease;
 }
 
 .res{
-    visibility:visible;
-
-
-
-position:absolute;
-top: 1;
-left: 1;
-right:0;
-display: flex;
-justify-content:center;
-align-items:center; 
-/*overflow-wrap: inherit; */   
-margin: 1px;
-grid-row: inherit;
-
+    visibility:visible; 
+    position:absolute;
+    top: 1;
+    left: 1;
+    right:0;
+    display: flex;
+    justify-content:center;
+    align-items:center;   
+    margin: 1px;
+    grid-row: inherit;
 }
 
 
@@ -150,8 +147,26 @@ grid-row: inherit;
        
     } 
 
+
+
+
+
+
+
+
 .zoom:hover {
     transform: scale(1.5)  ;
     transition: all 650ms ease-in-out;
    
 } 
+
+
+
+
+.girar{
+    width:50;
+    height:50;
+    background-color:black;
+    color:#fff;
+    margin-Top:500 !important;
+}

@@ -1,8 +1,14 @@
 import React,{useState} from 'react';
 import CloseIcon from '@material-ui/icons/Close';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import RotateLeft from '@material-ui/icons/RotateLeft'
+
+import { FiRotateCcw } from "react-icons/fi";
+
+
+
 import '../Tabla_1/visualizador.css';
-/*
+
 import imagen1 from 'C:/Users/desar/loginc/src/imgs/1.jpg';
 import imagen2 from 'C:/Users/desar/loginc/src/imgs/2.jpg';
 import imagen3 from  'C:/Users/desar/loginc/src/imgs/3.jpg';
@@ -16,8 +22,8 @@ import imagen10 from  'C:/Users/desar/loginc/src/imgs/10.jpg';
 import imagen11 from  'C:/Users/desar/loginc/src/imgs/11.jpg';
 import imagen12 from  'C:/Users/desar/loginc/src/imgs/12.jpg';
 import imagen13 from  'C:/Users/desar/loginc/src/imgs/13.jpg';
-*/
 
+/*
 import imagen1 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/1.jpg';
 import imagen2 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/2.jpg';
 import imagen3 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/3.jpg';
@@ -31,14 +37,16 @@ import imagen10 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB
 import imagen11 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/11.jpg';
 import imagen12 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/12.jpg';
 import imagen13 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/13.jpg';
-
+*/
 
 
 
 
 let estiloBotonSalir={width:50,height:50,color: "white"};
 let estiloBotonEliminar={width:50,height:50,backgroundColor:'black',color:'#fff',marginTop:600}
-let estiloBotonRotarRight={width:70,height:70,backgroundColor:'black',color:'#fff',margin:5,marginTop:-30}
+let estiloBotonRotarRight={width:70,height:70,backgroundColor:'grey',color:'#fff',margin:5,marginTop:-30}
+
+let estiloBotonRotar={width:80,height:80,backgroundColor:'black',color:'#fff',marginTop:700}
 
 
 
@@ -68,7 +76,24 @@ const Visualizador=() =>{
   setModel(true);    
   }
   
-  const [rotar,setRotar]=useState(0);  
+    
+
+
+ 
+const [count, setCount] = useState(0);
+
+
+let grados=count;
+
+let grade={transform:"rotate("+grados+"deg)" ,transition: "all 950ms ease"}
+
+
+
+
+
+
+
+
 
   return( 
     <>
@@ -76,36 +101,44 @@ const Visualizador=() =>{
 
         <CloseIcon style={estiloBotonSalir} onClick={()=>setModel(false)}/>     
 
-            <div className={
-             rotar===0? "rotar" 
-            :rotar===1? "rotar2"
-            :rotar===2? "rotar3" 
-            :rotar===3? "rotar4"            
-            :""}>
+<div style={grade} >
 
-
-
-
-
+            
 
               <div className="zoom">
               <img src={temimgSrc} alt=''/>
               </div>
 
-            </div>
+              
+</div>
+
+
+
+
 
             <div className='d-grid gap-2 res' style={{position:'absolute'}}>              
               
-              <button className='btn' style={estiloBotonRotarRight} onClick={()=>setRotar(0)}>0°</button>
-              <br/>
-              <button className='btn' style={estiloBotonRotarRight} onClick={()=>setRotar(1)}> 90°</button>
-              <br/>
-              <button className='btn' style={estiloBotonRotarRight} onClick={()=>setRotar(2)}> 180°</button>
-              <br/>
-              <button className='btn' style={estiloBotonRotarRight} onClick={()=>setRotar(3)}> 270°</button>
+              
+
+
+
+              <button className='btn' style={estiloBotonRotarRight} onClick={() => setCount(count + 90)}></button>
+              <button className='btn' style={{backgroundColor:'grey'}} onClick={() => setCount(count - 90)}>RotarIzquierda</button>
+
+
+
+
+
+              
               <br/>
               <DeleteForeverIcon className='btn'style={estiloBotonEliminar} />
+              <RotateLeft className='girar' style={estiloBotonEliminar}/>
+
+              <FiRotateCcw onClick={() => setCount(count - 90)} style={estiloBotonRotar}/>
+
+              <br/><br/>
               <br/>             
+              
             </div>  
 
             
@@ -124,6 +157,7 @@ const Visualizador=() =>{
                   Productor: JORGE A. MARTINEZ ZUCCARDI 
                   Muestra: Cajonera' 
                    /> 
+                   
 
                  </div>
                     )}

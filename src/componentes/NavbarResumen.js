@@ -1,24 +1,25 @@
 import React from 'react'
+import './navbarResumen.css'
 
-const navbarResumen = () => {
+const NavbarResumen = ({t5,t4,t3,t2,t1,promCalidad,promCat1,promcat2}) => {
     return (
         <div>
-            <div className="" style={{backgroundColor:'rgb(5, 114, 76)'}}>
-    <tr>
-        <td className='fecha'>Fecha</td>
-        <td className='productor'>{'Productor'}</td>
-        <td className='finca'>{'Finca'}</td>
-        <td className='up'>{'UP'}</td>
-        <td className='calibre'>{'Calibre'}</td>
-        <td className='destino'>{'Destino'}</td>
-        <td className='muestra'>{'Muestra'}</td>
-        <td className='t5'>{'resumenT5/data.length'}</td>
-        <td className='t4'>{'resumenT4/data.length'}</td>
-        <td className='t3'>{'resumenT3/data.length'}</td>
-        <td className='t2'>{'resumenT2/data.length'}</td>
-        <td className='t1'>{'resumenT1/data.length'}</td>
-        <td className='calidad'>{'calidad'}</td>
-        <td className='porcentaje'>{'cat1'}/{'cat2'}</td>
+            <div className="nav" >
+    <tr className="tr">
+        <td className="fecha" >{'Fecha'}</td>
+        <td className="productor">{'Multiple'}</td>
+        <td className="finca">{'Multiple'}</td>
+        <td className="up">{'up'}</td>
+        <td className="calibre">{'Multiple'}</td>
+        <td className="destino">{'Multiple'}</td>
+        <td className="muestra">{'Multiple'}</td>
+        <td className="t5">{t5}</td>
+        <td className="t4">{t4}</td>
+        <td className="t3">{t3}</td>
+        <td className="t2">{t2}</td>
+        <td className="t1">{t1}</td>
+        <td className="calidad">{promCalidad}</td>
+        <td className="porcentaje">{promCat1}/{promcat2}</td>
         
       </tr>
      </div>
@@ -26,4 +27,4 @@ const navbarResumen = () => {
     )
 }
 
-export default navbarResumen
+export default NavbarResumen

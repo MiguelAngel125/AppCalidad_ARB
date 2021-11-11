@@ -1,0 +1,77 @@
+.nav{
+    background-color:rgb(5, 114, 76) ;
+   
+    color:#fff;
+    width:100%;
+    height:40px;
+    
+   
+    
+    
+
+   
+}
+
+.tr{
+    background-color:rgb(5, 114, 76);        
+    width:100%;
+    display:flex;
+}
+td{
+    
+    
+}
+.fecha{
+    font-size:20px;
+    /*margin-left:0.1%;*/
+}
+.productor{
+    
+    font-size:20px;
+    margin-left:3.5%;
+}
+.finca{
+    font-size:20px;
+    margin-left:15.2%;
+}
+.up{
+    font-size:20px;
+    margin-left:5.4%;
+}
+
+.calibre{
+    font-size:20px;
+    margin-left:6.5%;
+} 
+.calidad{
+    font-size:20px;
+    margin-left:3.5%;
+}
+.destino{
+    font-size:20px;
+    margin-left:4.5%;
+}.fecha{
+    font-size:20px;
+    margin-left:1%;
+}.muestra{
+    font-size:20px;
+    margin-left:4.5%;
+}.porcentaje{
+    font-size:20px;
+    margin-left:3.5%;
+}.t1{
+    font-size:20px;
+    margin-left:3.5%;
+}.t2{
+    font-size:20px;
+    margin-left:3.5%;
+}.t3{
+    font-size:20px;
+    margin-left:3.5%;
+}.t4{
+    font-size:20px;
+    margin-left:3.5%;
+}.t5{
+    font-size:20px;
+    margin-left:4%;
+}

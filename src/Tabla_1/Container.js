@@ -9,6 +9,9 @@ import 'antd/dist/antd.css';
 import fire from '../conex/fire';
 import Modal from '../componentes/Modal';
 import '../Tabla_1/Tabla.css';
+import NavbarResumen from '../componentes/NavbarResumen';
+import VentanaFoto from '../componentes/VentanaFoto';
+
 
 
 const cerrarSesion=()=>{
@@ -17,17 +20,32 @@ const cerrarSesion=()=>{
 
 export const Container=()=>{
 const [calidad, setCalidad]=useState([]);
+const[mostrarVentana,setmostrarVentana]=useState(false);
+const[modalAbierto,setmodalAbierto]=useState(false);
+const [mostrar,setMostrar]=useState(false);
+
+  const abrirVentana=()=>{
+    setmostrarVentana(true);
+    }
+
+  const cerrarVentana=()=>{
+    setmostrarVentana(false);
+    }
+
+  const abrirModal=()=>{
+    setmodalAbierto(true);
+    }
+
+  const cerrarModal=()=>{
+    setmodalAbierto(false);
+    }  
+
+  const mostrardata=()=>{
+    setMostrar(true)
+    }
 
 
-const[isOpenModal,setIsOpenModal]=useState(false);
 
-  const openModal=()=>{
-    setIsOpenModal(true);
-  }
-
-  const closeModal=()=>{
-    setIsOpenModal(false);
-  }
 
 
 useEffect(()=>{
@@ -64,7 +82,18 @@ let estiloBotonGaleria={width:50,height:50,backgroundColor:'#585858',borderColor
 let estiloBotonSalir={width:50,height:50,backgroundColor:'red',borderColor:'#898989',color:'#fff',marginLeft:10}
 let estiloBotonFoto={width:35,height:35,backgroundColor:'#585858',borderColor:'#898989',color:'#fff'}
 
-const {Content } = Layout; 
+ 
+
+
+
+
+
+
+
+
+
+
+
 
 
 let index = 0;
@@ -77,11 +106,14 @@ calidad.forEach(item => {
     let t3 = parseInt(item.T3);
     let t2 = parseInt(item.T2);
     let t1 = parseInt(item.T1);
-    let sumTotal = 20;
+    let sumTotal = t5+t4+t3+t2+t1;
+
     let calidad = ((t5 * 5 + t4 * 4 + t3 * 3 + t2 * 2 + t1) / sumTotal).toFixed(2);   
     let cat1=(((sumTotal-t3-t2-t1)*100)/sumTotal).toFixed(0).toString();
     let cat2=(((sumTotal-t5-t4)*100)/sumTotal).toFixed(0).toString();
 
+
+if(mostrar===true){
   data.push({
     key: index,
     fecha:item.Fecha,
@@ -101,6 +133,15 @@ calidad.forEach(item => {
     url:item.URL,
   });
   index++;
+
+}
+else{
+  
+}
+
+
+
+ 
 });
 
 const filterNombre = data.map((x) => {
@@ -160,31 +201,46 @@ let T5 = 0;
 data.forEach((item) => {
   T5 += parseInt(item.t5);
 });
-let resumenT5 = T5 ;
+let resumenT5 = T5/data.length ;
 
 let T4 = 0;
 data.forEach((item) => {
   T4 += parseInt(item.t4);
 });
-let resumenT4 = T4 ;
+let resumenT4 = T4/data.length ;
 
 let T3 = 0;
 data.forEach((item) => {
   T3 += parseInt(item.t3);
 });
-let resumenT3 = T3 ;
+let resumenT3 = T3/data.length ;
 
 let T2 = 0;
 data.forEach((item) => {
   T2 += parseInt(item.t2);
 });
-let resumenT2 = T2 ;
+let resumenT2 = T2/data.length ;
 
 let T1 = 0;
 data.forEach((item) => {
   T1 += parseInt(item.t1);
 });
-let resumenT1 = T1 ;
+let resumenT1 = T1/data.length ;
+
+
+
+
+
+let suma=(T5+T4+T3+T2+T1);
+let promCalidad=((T5 * 5 + T4 * 4 + T3 * 3 + T2 * 2 + T1)/suma).toFixed(2)
+let promCat1=(((suma-T3-T2-T1)*100)/suma).toFixed(0).toString();
+let promcat2=(((suma-T5-T4)*100)/suma).toFixed(0).toString();
+
+
+
+
+
+
 
 const columns = [
   {
@@ -302,7 +358,7 @@ const columns = [
     title:'Foto',
     dataIndex: 'foto',
     width: 50,
-    render:()=><button className="btn" style={estiloBotonFoto} >{iconVerFoto}</button>
+    render:()=><button className="btn" style={estiloBotonFoto} onClick={()=>abrirVentana()}>{iconVerFoto}</button>
 
 
 
@@ -317,61 +373,56 @@ function onChange(pagination, filters, sorter, extra) {
 }
 
 return (  
+
+ 
 <Fragment>
-  <Layout>
     <nav style={{ color: 'white', backgroundColor: '#585858', height: 54, fontSize: 25 }}>  
       <button className='btn' style={estiloBotonGrafico}>{iconGrafico}</button>        
       {calendario}         
-      <button className='btn'style={estiloBotonActualizar}>{iconActualizar}</button> 
+      <button className='btn'style={estiloBotonActualizar} onClick={()=>mostrardata()}>{iconActualizar}</button> 
       <button className='btn'style={estiloBotonExportar}>{iconExportar}</button> 
 
-      <button className='btn'style={estiloBotonGaleria} onClick={()=>openModal()}>{iconImages}</button>
+      <button className='btn'style={estiloBotonGaleria} onClick={()=>abrirModal()}>{iconImages}</button>
 
       <button className='btn'style={estiloBotonSalir} onClick={()=>cerrarSesion()}>{iconExit}</button>    
     </nav>
 
-    <div className="nav">
-    <tr>
-        <td className='fecha'>Fecha</td>
-        <td className='productor'>{'Productor'}</td>
-        <td className='finca'>{'Finca'}</td>
-        <td className='up'>{'UP'}</td>
-        <td className='calibre'>{'Calibre'}</td>
-        <td className='destino'>{'Destino'}</td>
-        <td className='muestra'>{'Muestra'}</td>
-        <td className='t5'>{resumenT5/data.length}</td>
-        <td className='t4'>{resumenT4/data.length}</td>
-        <td className='t3'>{resumenT3/data.length}</td>
-        <td className='t2'>{resumenT2/data.length}</td>
-        <td className='t1'>{resumenT1/data.length}</td>
-        <td className='calidad'>{'calidad'}</td>
-        <td className='porcentaje'>{'cat1'}/{'cat2'}</td>
-        <td className='f'>{'cat1'}</td>
-      </tr>
-     </div>
-     
-    <Content>
-      <Table
-        columns={columns}
-        dataSource={data}
-        onChange={onChange}
-        pagination={false}
-        size="small"
-        scroll={{ y: 900}}
-        />
-    </Content>
-    <h2>
+    <NavbarResumen 
+      t5={resumenT5}
+      t4={resumenT4}
+      t3={resumenT3}
+      t2={resumenT2}
+      t1={resumenT1}
+      promCalidad={promCalidad}
+      promCat1={promCat1}
+      promcat2={promcat2}/>
+
+    <Table
+      columns={columns}
+      dataSource={data}
+      onChange={onChange}
+      pagination={false}
+      size="small"
+      scroll={{ y: 1000}}/>       
       
     <Modal 
-  isOpen={!isOpenModal}
-  closeModal={closeModal}/>
+      Abierto={!modalAbierto}
+      cerrarModal={cerrarModal}/>
 
-</h2>
-  </Layout>  
+    <VentanaFoto
+      mostrarVentana={!mostrarVentana}
+      cerrarVentana={cerrarVentana}/>
+
+
+</Fragment>
+   
+
+
 
   
   
-</Fragment>      
+  
+    
        
   )
 }
