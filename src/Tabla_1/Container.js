@@ -1,7 +1,7 @@
 import React,{useState,useEffect,Fragment} from 'react';
 import db from '../conex/fire';
 import {Table,DatePicker} from 'antd';
-import { Layout } from 'antd';
+
 import moment from 'moment';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSignOutAlt,faImages,faAngleDoubleDown,faFileExport, faRedo, faAngleLeft} from '@fortawesome/free-solid-svg-icons';
@@ -44,7 +44,7 @@ const [mostrar,setMostrar]=useState(false);
     setMostrar(true)
     }
 
-
+    
 
 
 
@@ -106,6 +106,7 @@ calidad.forEach(item => {
     let t3 = parseInt(item.T3);
     let t2 = parseInt(item.T2);
     let t1 = parseInt(item.T1);
+    
     let sumTotal = t5+t4+t3+t2+t1;
 
     let calidad = ((t5 * 5 + t4 * 4 + t3 * 3 + t2 * 2 + t1) / sumTotal).toFixed(2);   
@@ -186,13 +187,7 @@ const filterCalibre = data.map((x) => {
 
 
 
-/////////////////////////////
-const photo=data.map((x)=>{
-  let url='';
-  url=x.url
-  return (url)
-})
-////////////////////////////
+
 
 
 
@@ -371,6 +366,11 @@ const columns = [
 function onChange(pagination, filters, sorter, extra) {
   console.log('parametros', pagination,filters, sorter, extra);
 }
+
+
+
+
+//()=>mostrardata()
 
 return (  
 

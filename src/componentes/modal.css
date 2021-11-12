@@ -18,7 +18,7 @@
     transition: all 950ms ease;
 }
 .modal_dialog{
-    background-color:rgb(0, 0, 0);
+    background-color:rgb(123, 0, 0);
     padding: 10px;
     width: 1200px;
     height: 80%;

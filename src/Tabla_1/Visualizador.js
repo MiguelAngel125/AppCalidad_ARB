@@ -1,10 +1,8 @@
 import React,{useState} from 'react';
 import CloseIcon from '@material-ui/icons/Close';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import RotateLeft from '@material-ui/icons/RotateLeft'
-
 import { FiRotateCcw } from "react-icons/fi";
-
+import { FiRotateCw } from "react-icons/fi";
 import '../Tabla_1/visualizador.css';
 
 import imagen1 from 'C:/Users/desar/loginc/src/imgs/1.jpg';
@@ -40,9 +38,39 @@ import imagen13 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB
 
 
 let estiloBotonSalir={width:50,height:50,color: "white"};
-let estiloBotonEliminar={width:50,height:50,backgroundColor:'black',color:'#fff',marginTop:600}
-let estiloBotonRotarRight={width:70,height:70,backgroundColor:'grey',color:'#fff',margin:5,marginTop:-30}
-let estiloBotonRotar={width:80,height:80,backgroundColor:'black',color:'#fff',marginTop:700}
+let estiloBotonEliminar={width:60,height:60,backgroundColor:'rgba(0, 0, 0, 0)',color:'#fff',marginRight:-5,position:'absolute',display:'grid',marginTop:50}
+let estiloBotonRotar={width:60,height:60,backgroundColor:'rgba(0, 0, 0, 0)',color:'#fff',marginRight:-300,position:'absolute',display:'grid',marginTop:200}
+let estiloBotonRotar2={width:60,height:60,backgroundColor:'rgba(0, 0, 0, 0)',color:'#fff',marginRight:800,position:'absolute',display:'flex',marginTop:200}
+
+
+
+
+
+
+
+/*
+
+  const log = document.getElementById('log');
+
+  document.addEventListener('keydown', logKey);
+  
+  function logKey(e) {
+    
+
+    console.log(e.keyCode)       
+      
+    
+  
+  }
+
+
+  */
+
+
+
+
+
+
 
 
 const Visualizador=() =>{
@@ -69,10 +97,35 @@ const Visualizador=() =>{
   setTemImgSrc(imgSrc);
   setModel(true);    
   }
- 
-const [count, setCount] = useState(0);
-let grados=count;
-let grade={transform:"rotate("+grados+"deg)" ,transition: "all 950ms ease"}
+
+  
+  const [count, setCount] = useState(0);
+  let grados=count;
+  let grade={transform:"rotate("+grados+"deg)" ,transition: "all 950ms ease"}
+  let imagen={width:'100%',height:'100%',transform:"rotate("+grados+"deg)"}
+
+
+
+
+const cerrarResetGrados = ()=>{
+  setModel(false)
+  setCount(grados = 0)
+}
+
+
+
+
+
+
+
+//onClick={()=>setModel(false)}
+
+
+
+
+
+
+
 
 
 
@@ -84,70 +137,40 @@ let grade={transform:"rotate("+grados+"deg)" ,transition: "all 950ms ease"}
     <>
       <div className={model ? "model-open" : "model"}>       
 
-        <CloseIcon style={estiloBotonSalir} onClick={()=>setModel(false)}/>     
-
-<div style={grade} >
-
-            
-
-              <div className="zoom">
-              <img src={temimgSrc} alt=''/>
+        <CloseIcon style={estiloBotonSalir} onClick={()=>cerrarResetGrados()}/>     
+        <DeleteForeverIcon style={estiloBotonEliminar} />
+              <div className="zoom" >                    
+                      <img src={temimgSrc} alt=''  style={grade} />                      
               </div>
 
-              
-</div>
-
-
-
-
-
-            <div className='d-grid gap-2 res' style={{position:'absolute'}}>              
-              
-              
-
-
-
-              <button className='btn' style={estiloBotonRotarRight} onClick={() => setCount(count + 90)}></button>
-              <button className='btn' style={{backgroundColor:'grey'}} onClick={() => setCount(count - 90)}>RotarIzquierda</button>
-
-
-
-
-
-              
-              <br/>
-              <DeleteForeverIcon className='btn'style={estiloBotonEliminar} />
-              <RotateLeft className='girar' style={estiloBotonEliminar}/>
-
-              <FiRotateCcw onClick={() => setCount(count - 90)} style={estiloBotonRotar}/>
-
-              <br/><br/>
-              <br/>             
-              
-            </div>  
-
-            
+            <div className='res'>
+            <FiRotateCw onClick={() => setCount(count + 90)} style={estiloBotonRotar2}/>              
+            <FiRotateCcw onClick={() => setCount(count - 90)} style={estiloBotonRotar}/>          
+            </div>           
                     
-      </div>
+        </div>
        
           <div className="gallery"> 
-
            {data.map((item,index)=>{
-              return (
-                <div className="pics"  key={index} onClick={()=>getImg(item.imgSrc)} >
 
-                  <img src={item.imgSrc} alt='' style={{width:'100%',height:'100%'}} 
+             const  tecla=()=>{
+              getImg(item.imgSrc)
+              /*logKey()*/
+              
+
+             }
+              return (
+                <div className="pics"  key={index} onClick={()=>tecla()}  >
+                  <img src={item.imgSrc} alt=''  style={imagen} 
                   title='
                   UP: TU-0400-005
                   Productor: JORGE A. MARTINEZ ZUCCARDI 
                   Muestra: Cajonera' 
                    /> 
-                   
-
-                 </div>
-                    )}
+          </div>
+               )}
             )}           
-          </div> 
+       </div> 
     </>
   );
 };

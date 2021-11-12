@@ -3,7 +3,7 @@ import './navbarResumen.css'
 
 const NavbarResumen = ({t5,t4,t3,t2,t1,promCalidad,promCat1,promcat2}) => {
     return (
-        <div>
+        
             <div className="nav" >
     <tr className="tr">
         <td className="fecha" >{'Fecha'}</td>
@@ -23,7 +23,7 @@ const NavbarResumen = ({t5,t4,t3,t2,t1,promCalidad,promCat1,promcat2}) => {
         
       </tr>
      </div>
-        </div>
+        
     )
 }
 
