@@ -10,14 +10,14 @@ import Modal from '../componentes/Modal';
 import '../Tabla_1/Tabla.css';
 import NavbarResumen from '../componentes/NavbarResumen';
 import VentanaFoto from '../componentes/VentanaFoto';
-
+import Grafico from '../componentes/Grafico'
 
 const cerrarSesion=()=>{
   fire.auth().signOut();
 };
 
 export const Container=()=>{
-const [calidad, setCalidad]=useState([]);
+const [DBCalidad, setDBCalidad]=useState([]);
 const[mostrarVentana,setmostrarVentana]=useState(false);
 const[modalAbierto,setmodalAbierto]=useState(false);
 const [mostrar,setMostrar]=useState(false);
@@ -54,7 +54,7 @@ db.firestore().collection('dbcalidad')
     snap.forEach(doc => {
         documents.push({id:doc.id, ...doc.data()})           
     });
-    setCalidad(documents);
+    setDBCalidad(documents);
 })
 })
 
@@ -72,17 +72,17 @@ let iconExportar=<FontAwesomeIcon icon={faFileExport}/>;
 let iconActualizar=<FontAwesomeIcon icon={faRedo}/>
 let iconVerFoto=<FontAwesomeIcon icon={faAngleLeft}/>
 
-let estiloBotonGrafico={width:50,height:50,backgroundColor:'#585858',borderColor:'#898989',color:'#fff'}
-let estiloBotonActualizar={width:50,height:50,backgroundColor:'#585858',borderColor:'#898989',color:'#fff',marginLeft:10}
-let estiloBotonExportar={width:50,height:50,backgroundColor:'#585858',borderColor:'#898989',color:'#fff',marginLeft:10}
-let estiloBotonGaleria={width:50,height:50,backgroundColor:'#585858',borderColor:'#898989',color:'#fff',marginLeft:1250}
+let estiloBotonGrafico={width:50,height:50,backgroundColor:'#1C2B36',borderColor:'#898989',color:'#fff'}
+let estiloBotonActualizar={width:50,height:50,backgroundColor:'#1C2B36',borderColor:'#898989',color:'#fff',marginLeft:10}
+let estiloBotonExportar={width:50,height:50,backgroundColor:'#1C2B36',borderColor:'#898989',color:'#fff',marginLeft:10}
+let estiloBotonGaleria={width:50,height:50,backgroundColor:'#1C2B36',borderColor:'#898989',color:'#fff',marginLeft:1250}
 let estiloBotonSalir={width:50,height:50,backgroundColor:'red',borderColor:'#898989',color:'#fff',marginLeft:10}
-let estiloBotonFoto={width:35,height:35,backgroundColor:'#585858',borderColor:'#898989',color:'#fff'}
+let estiloBotonFoto={width:35,height:35,backgroundColor:'#1C2B36',borderColor:'#898989',color:'#fff'}
 
 let index = 0;
 let data = [];
 
-calidad.forEach(item => {
+DBCalidad.forEach(item => {
     let t5 = parseInt(item.T5);
     let t4 = parseInt(item.T4);
     let t3 = parseInt(item.T3);
@@ -196,6 +196,12 @@ let suma=(T5+T4+T3+T2+T1);
 let promCalidad=((T5 * 5 + T4 * 4 + T3 * 3 + T2 * 2 + T1)/suma).toFixed(2)
 let promCat1=(((suma-T3-T2-T1)*100)/suma).toFixed(0).toString();
 let promcat2=(((suma-T5-T4)*100)/suma).toFixed(0).toString();
+
+let calidad = ((T5 * 5 + T4 * 4 + T3 * 3 + T2 * 2 + T1) / suma).toFixed(2); 
+
+
+
+
 
 const columns = [
   {
@@ -329,7 +335,7 @@ function onChange(pagination, filters, sorter, extra) {
 
 return (   
 <Fragment>
-    <nav style={{ color: 'white', backgroundColor: '#585858', height: 54, fontSize: 25 }}>  
+    <nav style={{ color: 'white', backgroundColor: '#1C2B36', height: 54, fontSize: 25 }}>  
       <button className='btn' style={estiloBotonGrafico}>{iconGrafico}</button>        
       {calendario}         
       <button className='btn'style={estiloBotonActualizar} onClick={()=>mostrardata()}>{iconActualizar}</button> 
@@ -364,7 +370,20 @@ return (
       mostrarVentana={!mostrarVentana}
       cerrarVentana={cerrarVentana}/>
 
-</Fragment>   
+      <Grafico
+      t5={resumenT5}
+      t4={resumenT4}
+      t3={resumenT3}
+      t2={resumenT2}
+      t1={resumenT1}
+      calidad={calidad}
+      />
+
+
+</Fragment>
+  
+  
+    
        
   )
 }

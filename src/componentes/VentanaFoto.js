@@ -35,7 +35,7 @@ const VentanaFoto = ({mostrarVentana,cerrarVentana}) => {
                     
       </div>   
            
-    )        
+            
     </>
     )
 }
