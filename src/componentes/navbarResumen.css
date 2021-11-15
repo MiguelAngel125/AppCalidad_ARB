@@ -46,7 +46,7 @@ td{
     background-color:rgb(5, 114, 76); 
 }
 .calibre{
-    width: 9vw;
+    width: 8.7vw;
     display: inline-block;
     text-align: center;
     font-size: 20px;
@@ -69,37 +69,42 @@ td{
 .t5{
     width: 4.5vw;
     display: inline-block;
-    text-align: center;
+    text-align: left;
     font-size: 20px;
     background-color:rgb(5, 114, 76); 
+    padding-left: 13px;
 }
 .t4{
     width: 4.5vw;
     display: inline-block;
-    text-align: center;
+    text-align:left;
     font-size: 20px;
     background-color:rgb(5, 114, 76); 
+    padding-left: 10px;
 }
 .t3{
     width: 4.5vw;
     display: inline-block;
-    text-align: center;
+    text-align: left;
     font-size: 20px;
-    background-color:rgb(5, 114, 76); 
+    background-color:rgb(5, 114, 76);
+    padding-left: 10px; 
 }
 .t2{
     width: 4.5vw;
     display: inline-block;
-    text-align: center;
+    text-align: left;
     font-size: 20px;
-    background-color:rgb(5, 114, 76); 
+    background-color:rgb(5, 114, 76);
+    padding-left: 1px; 
 }
 .t1{
     width: 4.5vw;
     display: inline-block;
-    text-align: center;
+    text-align: left;
     font-size: 20px;
-    background-color:rgb(5, 114, 76); 
+    background-color:rgb(5, 114, 76);
+    padding-left: 1px; 
 }
 .calidad{
     width: 8vw;

@@ -1,0 +1,28 @@
+<Line            
+                    data={{ 
+                    labels:['Enero','Febrero', 'Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],                    
+                        datasets: [
+                            {
+                            label: 'Calidad Promedio',
+                            data: datapoints,
+                            borderColor: '#6441A5',
+                            fill: {value: 25},
+                            tension: 0.4, 
+                            pointBackgroundColor:'yellow',
+                            pointStyle:'circle',
+                            hitRadius:20,
+                            hoverRadius:5,
+                            intersect:true,
+                            displayColors:true,                        
+                                                              
+                            },
+                            
+                            
+                            
+                        ]
+                        
+                        
+                    }}
+                   
+                   
+                />

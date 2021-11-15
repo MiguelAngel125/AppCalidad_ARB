@@ -3,7 +3,7 @@ import db from '../conex/fire';
 import {Table,DatePicker} from 'antd';
 import moment from 'moment';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faSignOutAlt,faImages,faAngleDoubleDown,faFileExport, faRedo, faAngleLeft} from '@fortawesome/free-solid-svg-icons';
+import {faSignOutAlt,faImages,faAngleDoubleDown,faFileExport, faRedo, faImage} from '@fortawesome/free-solid-svg-icons';
 import 'antd/dist/antd.css';
 import fire from '../conex/fire';
 import Modal from '../componentes/Modal';
@@ -11,16 +11,56 @@ import '../Tabla_1/Tabla.css';
 import NavbarResumen from '../componentes/NavbarResumen';
 import VentanaFoto from '../componentes/VentanaFoto';
 import Grafico from '../componentes/Grafico'
+import { CSVLink} from 'react-csv' ;
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+
+import DateFnsUtils from '@date-io/date-fns';
+
+
+
+
+
+
+
+
+
 
 const cerrarSesion=()=>{
   fire.auth().signOut();
 };
 
-export const Container=()=>{
+
+
+
+
+
+
+
+
+
+let iconExit=<FontAwesomeIcon icon={faSignOutAlt}/>;
+let iconImages=<FontAwesomeIcon icon={faImages}/>;
+let iconGrafico=<FontAwesomeIcon icon={faAngleDoubleDown}/>;
+let iconExportar=<FontAwesomeIcon icon={faFileExport}/>;
+let iconActualizar=<FontAwesomeIcon icon={faRedo}/>
+let iconVerFoto=<FontAwesomeIcon icon={faImage}/>
+
+let estiloBotonGrafico={width:50,height:50,backgroundColor:'#1C2B36',borderColor:'#1C2B36',color:'#fff',marginLeft:2}
+let estiloBotonActualizar={width:50,height:50,backgroundColor:'#1C2B36',borderColor:'#1C2B36',color:'#fff',marginLeft:'1vw'}
+let estiloBotonExportar={width:50,height:50,backgroundColor:'#1C2B36',borderColor:'#1C2B36',color:'#fff',marginLeft:10,padding:10.5}
+let estiloBotonGaleria={width:50,height:50,backgroundColor:'#1C2B36',borderColor:'#1C2B36',color:'#fff',marginLeft:'55vw'}
+let estiloBotonSalir={width:45,height:45,backgroundColor:'red',borderColor:'red',color:'#fff',marginLeft:10,marginTop:'1vh'}
+let estiloBotonFoto={width:35,height:35,backgroundColor:'rgb(5, 114, 76)',borderColor:'##1C2B369',color:'#fff'}
+
+
+
+export const Container=(props)=>{
+
 const [DBCalidad, setDBCalidad]=useState([]);
 const[mostrarVentana,setmostrarVentana]=useState(false);
 const [mostrarGrafico,setMostrarGrafico]=useState(false)
 const[modalAbierto,setmodalAbierto]=useState(false);
+
 const [mostrar,setMostrar]=useState(false);
 
   const abrirVentana=()=>{
@@ -63,29 +103,11 @@ db.firestore().collection('dbcalidad')
 })
 })
 
-const {RangePicker } = DatePicker;
-const dateFormat = 'DD/MM/YYYY';
-let calendario=<RangePicker 
-defaultValue={[moment('14/10/2021', dateFormat),moment('14/10/2021', dateFormat)]}
-format={dateFormat}style={{width:250,marginLeft:'2vw'}}/>
 
-
-let iconExit=<FontAwesomeIcon icon={faSignOutAlt}/>;
-let iconImages=<FontAwesomeIcon icon={faImages}/>;
-let iconGrafico=<FontAwesomeIcon icon={faAngleDoubleDown}/>;
-let iconExportar=<FontAwesomeIcon icon={faFileExport}/>;
-let iconActualizar=<FontAwesomeIcon icon={faRedo}/>
-let iconVerFoto=<FontAwesomeIcon icon={faAngleLeft}/>
-
-let estiloBotonGrafico={width:50,height:50,backgroundColor:'#1C2B36',borderColor:'#1C2B36',color:'#fff',marginLeft:2,title:'hola'}
-let estiloBotonActualizar={width:50,height:50,backgroundColor:'#1C2B36',borderColor:'#1C2B36',color:'#fff',marginLeft:'1vw'}
-let estiloBotonExportar={width:50,height:50,backgroundColor:'#1C2B36',borderColor:'#1C2B36',color:'#fff',marginLeft:10}
-let estiloBotonGaleria={width:50,height:50,backgroundColor:'#1C2B36',borderColor:'#1C2B36',color:'#fff',marginLeft:'55vw'}
-let estiloBotonSalir={width:45,height:45,backgroundColor:'red',borderColor:'red',color:'#fff',marginLeft:10,marginTop:'1vh'}
-let estiloBotonFoto={width:35,height:35,backgroundColor:'rgb(5, 114, 76)',borderColor:'##1C2B369',color:'#fff'}
-
-let index = 0;
+let index=0;
+let index_1 = 0;
 let data = [];
+let data_1 = [];
 
 DBCalidad.forEach(item => {
     let t5 = parseInt(item.T5);
@@ -97,6 +119,28 @@ DBCalidad.forEach(item => {
     let calidad = ((t5 * 5 + t4 * 4 + t3 * 3 + t2 * 2 + t1) / sumTotal).toFixed(2);   
     let cat1=(((sumTotal-t3-t2-t1)*100)/sumTotal).toFixed(0).toString();
     let cat2=(((sumTotal-t5-t4)*100)/sumTotal).toFixed(0).toString();
+
+
+    data_1.push({
+      key: index_1,
+      fecha:item.Fecha,
+      productor: item.Nombre,
+      finca:item.Finca,
+      up:item.UP,
+      calibre: item.Calibre,
+      destino:item.Destino,
+      muestra:item.Muestra,
+      t5:item.T5,
+      t4:item.T4,
+      t3:item.T3,
+      t2:item.T2,
+      t1:item.T1,
+      calidad:calidad,
+      porcentaje:cat1 +"/"+ cat2, 
+      
+    });
+    index_1++;
+
 
 if(mostrar===true){
   data.push({
@@ -115,7 +159,7 @@ if(mostrar===true){
     t1:item.T1,
     calidad:calidad,
     porcentaje:cat1 +"/"+ cat2, 
-    url:item.URL,
+    
   });
   index++;
 }
@@ -125,7 +169,8 @@ else{
 
 
  
-});
+}
+);
 
 const filterNombre = data.map((x) => {
   let productor = '';
@@ -202,13 +247,8 @@ let promCalidad=((T5 * 5 + T4 * 4 + T3 * 3 + T2 * 2 + T1)/suma).toFixed(2)
 let promCat1=(((suma-T3-T2-T1)*100)/suma).toFixed(0).toString();
 let promcat2=(((suma-T5-T4)*100)/suma).toFixed(0).toString();
 
-let calidad = ((T5 * 5 + T4 * 4 + T3 * 3 + T2 * 2 + T1) / suma).toFixed(2); 
-
-
-
-
-
 const columns = [
+ 
   {
     title: 'Fecha',
     dataIndex: 'fecha',
@@ -219,10 +259,12 @@ const columns = [
     title: 'Productor',
     dataIndex: 'productor',
     width: '20%',
+    
     filters: filterNombre,
     onFilter: (value, record) => record.productor.indexOf(value) === 0,
 
-    sorter: (a, b) => a.productor.length - b.productor.length,    
+    sorter: (a, b) => a.productor.length - b.productor.length,   
+    footer:true 
   },  
   {
     title: 'Finca',
@@ -333,11 +375,10 @@ const columns = [
 
   },  
 ];
+
 function onChange(pagination, filters, sorter, extra) {
-  console.log('parametros', pagination,filters, sorter, extra);
+  console.log('parametros',filters, extra);  
 }
-
-
 /*<Grafico
 t5={resumenT5}
 t4={resumenT4}
@@ -347,13 +388,33 @@ t1={resumenT1}
 calidad={calidad}
 />
 */
+
+const {childClicked}=props;
+
+
+function sayHello(names){
+  alert('Hello ' + names)
+  return (<h1>hola {names}</h1>)
+}
+
+
 return (   
 <Fragment>
-    <nav style={{ color: 'white', backgroundColor: '#1C2B36', height: 54, fontSize: 25, display:'flex', justifyContent:'space-around', flexDirection:'row'  }}>  
-      <button className='btn' style={estiloBotonGrafico} onClick={()=>abrirGrafico()}>{iconGrafico}</button>        
-      {calendario}         
-      <button className='btn'style={estiloBotonActualizar} onClick={()=>mostrardata()}>{iconActualizar}</button> 
-      <button className='btn'style={estiloBotonExportar}>{iconExportar}</button> 
+    <nav style={{ color: 'white', backgroundColor: '#1C2B36', height: 54, fontSize: 25, display:'flex', justifyContent:'space-around', flexDirection:'row'  }}>
+
+      
+      <button /*className='btn' style={estiloBotonGrafico} onClick={()=>abrirGrafico()}*/>{iconGrafico}</button>     
+
+
+      <MuiPickersUtilsProvider utils={DateFnsUtils}></MuiPickersUtilsProvider>
+
+
+
+
+
+
+      <button className='btn'style={estiloBotonActualizar} onClick={(e) => { if (window.confirm('Hay ' + index_1 + ' Registros. Desea continuar?')) mostrardata() } }>{iconActualizar}</button>       
+      <CSVLink data={data} separator={';'} filename={'Calidad.csv'} className='btn' style={estiloBotonExportar} > {iconExportar}  </CSVLink>
       <button className='btn'style={estiloBotonGaleria} onClick={()=>abrirModal()}>{iconImages}</button>
       <button className='btn'style={estiloBotonSalir} onClick={()=>cerrarSesion()}>{iconExit}</button>    
     </nav>
@@ -374,7 +435,8 @@ return (
       onChange={onChange}
       pagination={false}
       size="small"
-      scroll={{ y: 1000}}/> 
+      scroll={{ y: 1000}}    
+      />
 
     <Modal 
       Abierto={!modalAbierto}
@@ -384,18 +446,12 @@ return (
       mostrarVentana={!mostrarVentana}
       cerrarVentana={cerrarVentana}/>
 
-    <Grafico
-      mostrarGrafico={!mostrarGrafico}
-      cerrarGrafico={cerrarGrafico}/>
 
-     
-
-
-</Fragment>
-  
-  
     
-       
+
+
+
+</Fragment>       
   )
 }
 export default Container  ;
