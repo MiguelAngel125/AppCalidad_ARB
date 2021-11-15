@@ -1,77 +1,125 @@
 .nav{
-    background-color:rgb(5, 114, 76) ;
-   
-    color:#fff;
-    width:100%;
-    height:40px;
-    
-   
-    
-    
-
-   
-}
-
-.tr{
-    background-color:rgb(5, 114, 76);        
-    width:100%;
-    display:flex;
+    background-color:rgb(5, 114, 76);   
+    color:#ffffff;
+    width:100%; 
+    height:30px;
 }
 td{
-    
-    
-}
-.fecha{
-    font-size:20px;
-    /*margin-left:0.1%;*/
-}
-.productor{
-    
-    font-size:20px;
-    margin-left:3.5%;
-}
-.finca{
-    font-size:20px;
-    margin-left:15.2%;
-}
-.up{
-    font-size:20px;
-    margin-left:5.4%;
+    /*background-color: rgba(121, 121, 121, 0.393);*/
+    background-color: #1c2b3647;
+    /*background-color:rgba(5, 114, 76, 0.139);*/
 }
 
+.barra{
+    width: 100%;
+    display:flex;
+    justify-content: space-around;
+    flex-Direction:row;    
+}
+.fecha{    
+    font-size: 20px;
+    width: 7.4vw;
+    display: inline-block;    
+    text-align: center;
+    font-size: 20px;
+    background-color:rgb(5, 114, 76); 
+}
+.productor{
+    width: 21.5vw;
+    display: inline-block;
+    text-align: center; 
+    font-size: 20px;   
+    background-color:rgb(5, 114, 76); 
+}
+.finca{
+    width: 8.5vw;
+    display: inline-block;
+    text-align: center; 
+    font-size: 20px;  
+    background-color:rgb(5, 114, 76); 
+}
+.up{
+    width: 8.5vw;
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+    background-color:rgb(5, 114, 76); 
+}
 .calibre{
-    font-size:20px;
-    margin-left:6.5%;
-} 
-.calidad{
-    font-size:20px;
-    margin-left:3.5%;
+    width: 9vw;
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+    background-color:rgb(5, 114, 76); 
 }
 .destino{
-    font-size:20px;
-    margin-left:4.5%;
-}.fecha{
-    font-size:20px;
-    margin-left:1%;
-}.muestra{
-    font-size:20px;
-    margin-left:4.5%;
-}.porcentaje{
-    font-size:20px;
-    margin-left:3.5%;
-}.t1{
-    font-size:20px;
-    margin-left:3.5%;
-}.t2{
-    font-size:20px;
-    margin-left:3.5%;
-}.t3{
-    font-size:20px;
-    margin-left:3.5%;
-}.t4{
-    font-size:20px;
-    margin-left:3.5%;
-}.t5{
-    font-size:20px;
-    margin-left:4%;
+    width: 8.5vw;
+    display: inline-block;
+    text-align: center;   
+    font-size: 20px;
+    background-color:rgb(5, 114, 76); 
+}
+.muestra{
+    width: 8.5vw;
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+    background-color:rgb(5, 114, 76); 
+}
+.t5{
+    width: 4.5vw;
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+    background-color:rgb(5, 114, 76); 
+}
+.t4{
+    width: 4.5vw;
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+    background-color:rgb(5, 114, 76); 
+}
+.t3{
+    width: 4.5vw;
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+    background-color:rgb(5, 114, 76); 
+}
+.t2{
+    width: 4.5vw;
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+    background-color:rgb(5, 114, 76); 
+}
+.t1{
+    width: 4.5vw;
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+    background-color:rgb(5, 114, 76); 
+}
+.calidad{
+    width: 8vw;
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+    background-color:rgb(5, 114, 76); 
+}
+.porcentaje{
+    width: 8vw;
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+    background-color:rgb(5, 114, 76); 
+}
+.foto{
+    width: 7vw;
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+    background-color:rgb(5, 114, 76); 
+
 }

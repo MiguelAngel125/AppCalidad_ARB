@@ -112,7 +112,7 @@
 .res{
     visibility:visible; 
     position:relative;
-    top: 1;
+    top: 1; 
     
     right:0;
     display: flex;

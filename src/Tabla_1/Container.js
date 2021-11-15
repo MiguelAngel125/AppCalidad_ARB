@@ -19,11 +19,20 @@ const cerrarSesion=()=>{
 export const Container=()=>{
 const [DBCalidad, setDBCalidad]=useState([]);
 const[mostrarVentana,setmostrarVentana]=useState(false);
+const [mostrarGrafico,setMostrarGrafico]=useState(false)
 const[modalAbierto,setmodalAbierto]=useState(false);
 const [mostrar,setMostrar]=useState(false);
 
   const abrirVentana=()=>{
     setmostrarVentana(true);
+    }
+
+  const abrirGrafico=()=>{
+    setMostrarGrafico(true);
+    }
+
+  const cerrarGrafico=()=>{
+    setMostrarGrafico(false);
     }
 
   const cerrarVentana=()=>{
@@ -41,11 +50,7 @@ const [mostrar,setMostrar]=useState(false);
   const mostrardata=()=>{
     setMostrar(true)
     }
-
     
-
-
-
 useEffect(()=>{
      
 db.firestore().collection('dbcalidad')
@@ -62,7 +67,7 @@ const {RangePicker } = DatePicker;
 const dateFormat = 'DD/MM/YYYY';
 let calendario=<RangePicker 
 defaultValue={[moment('14/10/2021', dateFormat),moment('14/10/2021', dateFormat)]}
-format={dateFormat}style={{width:250,marginLeft:100}}/>
+format={dateFormat}style={{width:250,marginLeft:'2vw'}}/>
 
 
 let iconExit=<FontAwesomeIcon icon={faSignOutAlt}/>;
@@ -72,12 +77,12 @@ let iconExportar=<FontAwesomeIcon icon={faFileExport}/>;
 let iconActualizar=<FontAwesomeIcon icon={faRedo}/>
 let iconVerFoto=<FontAwesomeIcon icon={faAngleLeft}/>
 
-let estiloBotonGrafico={width:50,height:50,backgroundColor:'#1C2B36',borderColor:'#898989',color:'#fff'}
-let estiloBotonActualizar={width:50,height:50,backgroundColor:'#1C2B36',borderColor:'#898989',color:'#fff',marginLeft:10}
-let estiloBotonExportar={width:50,height:50,backgroundColor:'#1C2B36',borderColor:'#898989',color:'#fff',marginLeft:10}
-let estiloBotonGaleria={width:50,height:50,backgroundColor:'#1C2B36',borderColor:'#898989',color:'#fff',marginLeft:1250}
-let estiloBotonSalir={width:50,height:50,backgroundColor:'red',borderColor:'#898989',color:'#fff',marginLeft:10}
-let estiloBotonFoto={width:35,height:35,backgroundColor:'#1C2B36',borderColor:'#898989',color:'#fff'}
+let estiloBotonGrafico={width:50,height:50,backgroundColor:'#1C2B36',borderColor:'#1C2B36',color:'#fff',marginLeft:2,title:'hola'}
+let estiloBotonActualizar={width:50,height:50,backgroundColor:'#1C2B36',borderColor:'#1C2B36',color:'#fff',marginLeft:'1vw'}
+let estiloBotonExportar={width:50,height:50,backgroundColor:'#1C2B36',borderColor:'#1C2B36',color:'#fff',marginLeft:10}
+let estiloBotonGaleria={width:50,height:50,backgroundColor:'#1C2B36',borderColor:'#1C2B36',color:'#fff',marginLeft:'55vw'}
+let estiloBotonSalir={width:45,height:45,backgroundColor:'red',borderColor:'red',color:'#fff',marginLeft:10,marginTop:'1vh'}
+let estiloBotonFoto={width:35,height:35,backgroundColor:'rgb(5, 114, 76)',borderColor:'##1C2B369',color:'#fff'}
 
 let index = 0;
 let data = [];
@@ -302,7 +307,7 @@ const columns = [
   {
     title: 'Calidad',
     dataIndex: 'calidad',
-    width: 100,
+    width: '8%',
     align:'center',
     defaultSortOrder: 'descend',
     sorter: (a, b) => a.age - b.age,
@@ -310,7 +315,7 @@ const columns = [
   {
     title: 'Porcentaje',
     dataIndex: 'porcentaje',
-    width: 100,
+    width: '8%',
     align:'center',
     defaultSortOrder: 'descend',
     sorter: (a, b) => a.age - b.age,    
@@ -318,7 +323,7 @@ const columns = [
   {
     title:'Foto',
     dataIndex: 'foto',
-    width: 50,
+    width: '5%',
     render:()=><button className="btn" style={estiloBotonFoto} onClick={()=>abrirVentana()}>{iconVerFoto}</button>
 
 
@@ -333,10 +338,19 @@ function onChange(pagination, filters, sorter, extra) {
 }
 
 
+/*<Grafico
+t5={resumenT5}
+t4={resumenT4}
+t3={resumenT3}
+t2={resumenT2}
+t1={resumenT1}
+calidad={calidad}
+/>
+*/
 return (   
 <Fragment>
-    <nav style={{ color: 'white', backgroundColor: '#1C2B36', height: 54, fontSize: 25 }}>  
-      <button className='btn' style={estiloBotonGrafico}>{iconGrafico}</button>        
+    <nav style={{ color: 'white', backgroundColor: '#1C2B36', height: 54, fontSize: 25, display:'flex', justifyContent:'space-around', flexDirection:'row'  }}>  
+      <button className='btn' style={estiloBotonGrafico} onClick={()=>abrirGrafico()}>{iconGrafico}</button>        
       {calendario}         
       <button className='btn'style={estiloBotonActualizar} onClick={()=>mostrardata()}>{iconActualizar}</button> 
       <button className='btn'style={estiloBotonExportar}>{iconExportar}</button> 
@@ -346,7 +360,7 @@ return (
 
     <NavbarResumen 
       t5={resumenT5}
-      t4={resumenT4}
+      t4={resumenT4} 
       t3={resumenT3}
       t2={resumenT2}
       t1={resumenT1}
@@ -370,14 +384,11 @@ return (
       mostrarVentana={!mostrarVentana}
       cerrarVentana={cerrarVentana}/>
 
-      <Grafico
-      t5={resumenT5}
-      t4={resumenT4}
-      t3={resumenT3}
-      t2={resumenT2}
-      t1={resumenT1}
-      calidad={calidad}
-      />
+    <Grafico
+      mostrarGrafico={!mostrarGrafico}
+      cerrarGrafico={cerrarGrafico}/>
+
+     
 
 
 </Fragment>

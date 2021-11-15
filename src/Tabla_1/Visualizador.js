@@ -4,7 +4,7 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { FiRotateCcw } from "react-icons/fi";
 import { FiRotateCw } from "react-icons/fi";
 import '../Tabla_1/visualizador.css';
-
+/*
 import imagen1 from 'C:/Users/desar/loginc/src/imgs/1.jpg';
 import imagen2 from 'C:/Users/desar/loginc/src/imgs/2.jpg';
 import imagen3 from  'C:/Users/desar/loginc/src/imgs/3.jpg';
@@ -18,8 +18,8 @@ import imagen10 from  'C:/Users/desar/loginc/src/imgs/10.jpg';
 import imagen11 from  'C:/Users/desar/loginc/src/imgs/11.jpg';
 import imagen12 from  'C:/Users/desar/loginc/src/imgs/12.jpg';
 import imagen13 from  'C:/Users/desar/loginc/src/imgs/13.jpg';
+*/
 
-/*
 import imagen1 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/1.jpg';
 import imagen2 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/2.jpg';
 import imagen3 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/3.jpg';
@@ -33,7 +33,7 @@ import imagen10 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB
 import imagen11 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/11.jpg';
 import imagen12 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/12.jpg';
 import imagen13 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/13.jpg';
-*/
+
 
 
 
@@ -41,11 +41,6 @@ let estiloBotonSalir={width:50,height:50,color: "white"};
 let estiloBotonEliminar={width:60,height:60,backgroundColor:'rgba(0, 0, 0, 0)',color:'#fff',marginRight:-5,position:'absolute',display:'grid',marginTop:50}
 let estiloBotonRotar={width:60,height:60,backgroundColor:'rgba(0, 0, 0, 0)',color:'#fff',marginRight:-300,position:'absolute',display:'grid',marginTop:200}
 let estiloBotonRotar2={width:60,height:60,backgroundColor:'rgba(0, 0, 0, 0)',color:'#fff',marginRight:800,position:'absolute',display:'flex',marginTop:200}
-
-
-
-
-
 
 
 /*
@@ -65,13 +60,6 @@ let estiloBotonRotar2={width:60,height:60,backgroundColor:'rgba(0, 0, 0, 0)',col
 
 
   */
-
-
-
-
-
-
-
 
 const Visualizador=() =>{
   let data=[
@@ -104,34 +92,10 @@ const Visualizador=() =>{
   let grade={transform:"rotate("+grados+"deg)" ,transition: "all 950ms ease"}
   let imagen={width:'100%',height:'100%',transform:"rotate("+grados+"deg)"}
 
-
-
-
 const cerrarResetGrados = ()=>{
   setModel(false)
   setCount(grados = 0)
 }
-
-
-
-
-
-
-
-//onClick={()=>setModel(false)}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   return( 
     <>
@@ -148,7 +112,7 @@ const cerrarResetGrados = ()=>{
             <FiRotateCcw onClick={() => setCount(count - 90)} style={estiloBotonRotar}/>          
             </div>           
                     
-        </div>
+        </div> 
        
           <div className="gallery"> 
            {data.map((item,index)=>{

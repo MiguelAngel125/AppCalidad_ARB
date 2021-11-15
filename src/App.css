@@ -10,10 +10,11 @@
   width: 100%;
   min-height: 100vh;
   padding: 0 20px;
-  background: #545555;
+  background: #1C2B36;
   display: flex;
   background-size: cover;
 }
+/*#545555*/
 
 .login .loginContainer {
   padding: 60px;
@@ -78,8 +79,9 @@
 }
 
 .login .loginContainer .errorMsg {
-  color: rgb(153, 0, 0);
-  font-size: 16px;  
+  color: #1C2B36;
+  font-size: 20px;  
+ font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
 h1{

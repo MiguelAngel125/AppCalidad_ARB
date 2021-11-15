@@ -3,3 +3,10 @@
     background-color:yellow;
     width:100%;
 }
+
+
+.btn:hover{
+    filter: opacity(1);
+    transform: scale(1.1);
+    
+}

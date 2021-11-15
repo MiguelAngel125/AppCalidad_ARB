@@ -29,8 +29,11 @@
     
     position:fixed;
     color: rgb(247, 246, 253);
-    margin-left:1190px ;
-    
-    
+    margin-left:1190px;
+    background-color: rgba(255, 2, 2, 0.722);  
+    border-color: rgba(255, 2, 2, 0.722); 
+}
+.btnSalir:hover{
+    background-color: red;
 }
 
