@@ -17,7 +17,7 @@ let estilo={width:'100px',backgroundColor:'rgb(5, 114, 76)',color:'white',margin
 
 const Grafico=({t5,t4,t3,t2,t1,calidad,mostrarGrafico,cerrarGrafico})=>{
 
-    const datapoints = [5, 3.8, 4.05, 4, 3.9,4.5, 3.8];
+    const datapoints = [calidad,4.2,4.1,4.06,3.8,calidad,4,4.1,4.06,3.8,4,4.05];
 
 
     
@@ -28,11 +28,11 @@ const Grafico=({t5,t4,t3,t2,t1,calidad,mostrarGrafico,cerrarGrafico})=>{
     return(
         <>
         
-        <div className={!mostrarGrafico ? "grafico-open" : "grafico"}>
-            <button className='btn' style={estilo}>Grafico</button>
-            <div className='grafico_dialog'>
+        <div >
+            
+            <div >
                 
-                <CloseIcon className='btn' style={estiloBotonSalir} onClick={()=>cerrarGrafico()}/>
+                
    
 
                 <div className='table-responsive' style={{backgroundColor:'#1C2B36',width:'60vw',height:'70vh',position:'relative',marginLeft:'15vw'}}>  
