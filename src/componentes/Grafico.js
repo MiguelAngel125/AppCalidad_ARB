@@ -28,7 +28,7 @@ const Grafico=({t5,t4,t3,t2,t1,calidad,mostrarGrafico,cerrarGrafico})=>{
     return(
         <>
         
-        <div className={mostrarGrafico ? "grafico-open" : "grafico"}>
+        <div className={!mostrarGrafico ? "grafico-open" : "grafico"}>
             <button className='btn' style={estilo}>Grafico</button>
             <div className='grafico_dialog'>
                 

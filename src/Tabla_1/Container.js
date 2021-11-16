@@ -1,6 +1,6 @@
 import React,{useState,useEffect,Fragment} from 'react';
 import db from '../conex/fire';
-import {Table,DatePicker} from 'antd';
+import {Table} from 'antd';
 import moment from 'moment';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSignOutAlt,faImages,faAngleDoubleDown,faFileExport, faRedo, faImage} from '@fortawesome/free-solid-svg-icons';
@@ -12,16 +12,7 @@ import NavbarResumen from '../componentes/NavbarResumen';
 import VentanaFoto from '../componentes/VentanaFoto';
 import Grafico from '../componentes/Grafico'
 import { CSVLink} from 'react-csv' ;
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-
-import DateFnsUtils from '@date-io/date-fns';
-
-
-
-
-
-
-
+import { DatePicker } from '@material-ui/pickers';
 
 
 
@@ -54,13 +45,12 @@ let estiloBotonFoto={width:35,height:35,backgroundColor:'rgb(5, 114, 76)',border
 
 
 
-export const Container=(props)=>{
+export const Container=()=>{
 
 const [DBCalidad, setDBCalidad]=useState([]);
 const[mostrarVentana,setmostrarVentana]=useState(false);
 const [mostrarGrafico,setMostrarGrafico]=useState(false)
 const[modalAbierto,setmodalAbierto]=useState(false);
-
 const [mostrar,setMostrar]=useState(false);
 
   const abrirVentana=()=>{
@@ -367,12 +357,6 @@ const columns = [
     dataIndex: 'foto',
     width: '5%',
     render:()=><button className="btn" style={estiloBotonFoto} onClick={()=>abrirVentana()}>{iconVerFoto}</button>
-
-
-
-
-
-
   },  
 ];
 
@@ -388,28 +372,21 @@ t1={resumenT1}
 calidad={calidad}
 />
 */
-
-const {childClicked}=props;
-
-
-function sayHello(names){
-  alert('Hello ' + names)
-  return (<h1>hola {names}</h1>)
-}
+const[fechaSeleccionada,cambiarFechaSelecionada]=useState(new Date())
 
 
 return (   
 <Fragment>
-    <nav style={{ color: 'white', backgroundColor: '#1C2B36', height: 54, fontSize: 25, display:'flex', justifyContent:'space-around', flexDirection:'row'  }}>
+    <nav style={{ color: 'white', backgroundColor: '#1C2B36', height: 54, fontSize: 25, display:'flex', justifyContent:'space-around', flexDirection:'row'  }}>      
+      <button className='btn' style={estiloBotonGrafico} onClick={()=>abrirGrafico()}>{iconGrafico}</button>     
 
-      
-      <button /*className='btn' style={estiloBotonGrafico} onClick={()=>abrirGrafico()}*/>{iconGrafico}</button>     
-
-
-      <MuiPickersUtilsProvider utils={DateFnsUtils}></MuiPickersUtilsProvider>
-
+<DatePicker style={{background:'white',height:'7vh',marginTop:'1vh',width:'10vw',borderRadius:'5px'}}
+value={fechaSeleccionada} onChange={cambiarFechaSelecionada}
+/>
 
 
+
+<DatePicker style={{background:'white',height:'7vh',marginTop:'1vh',width:'10vw'}}/>
 
 
 
@@ -429,6 +406,10 @@ return (
       promCat1={promCat1}
       promcat2={promcat2}/>
 
+      <Grafico 
+      mostrarGrafico={!mostrarGrafico}
+      cerrarGrafico={cerrarGrafico}/>
+
     <Table
       columns={columns}
       dataSource={data}
@@ -444,10 +425,7 @@ return (
 
     <VentanaFoto
       mostrarVentana={!mostrarVentana}
-      cerrarVentana={cerrarVentana}/>
-
-
-    
+      cerrarVentana={cerrarVentana}/> 
 
 
 
