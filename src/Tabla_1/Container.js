@@ -7,7 +7,7 @@ import NavbarResumen from '../componentes/NavbarResumen';
 import VentanaFoto from '../componentes/VentanaFoto';
 
 
-export const Container=({datatest,t5,t4,t3,t2,t1,promCalidad,promCat1,promcat2,columna,Abierto,cerrarModal})=>{
+export const Container=({datatest,t5,t4,t3,t2,t1,promCalidad,promCat1,promcat2,columna,cerrarModal})=>{
 
 
 const[mostrarVentana,setmostrarVentana]=useState(false);
@@ -47,7 +47,7 @@ return (
 
 
 
-  
+
     <NavbarResumen 
       t5={t5}
       t4={t4} 

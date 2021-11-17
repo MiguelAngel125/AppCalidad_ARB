@@ -7,7 +7,7 @@ import db from '../conex/fire';
 import { CSVLink} from 'react-csv' ;
 import { DatePicker } from '@material-ui/pickers';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faSignOutAlt,faImages,faAngleDoubleDown,faFileExport, faRedo, faImage} from '@fortawesome/free-solid-svg-icons';
+import {faSignOutAlt,faImages,faAngleDoubleDown,faFileExport, faRedo, faImage,faAngleDoubleUp} from '@fortawesome/free-solid-svg-icons';
 import Modal from '../componentes/Modal';
 import VentanaFoto from '../componentes/VentanaFoto';
 
@@ -16,6 +16,9 @@ import VentanaFoto from '../componentes/VentanaFoto';
 
 
 
+
+
+let iconbtn=<FontAwesomeIcon icon={faAngleDoubleUp}/>;
 let iconExit=<FontAwesomeIcon icon={faSignOutAlt}/>;
 let iconImages=<FontAwesomeIcon icon={faImages}/>;
 let iconGrafico=<FontAwesomeIcon icon={faAngleDoubleDown}/>;
@@ -39,31 +42,53 @@ function Navbar() {
   const[fechaDesde,setFechaDesde]=useState(new Date().toDateString())
   const[fechaHasta,setFechaHasta]=useState(new Date().toDateString())
   const[mostrarVentana,setmostrarVentana]=useState(false);
-  const[modalAbierto,setmodalAbierto]=useState(false);
+  const[modalAbierto,setmodalAbierto]=useState(false);  
+  const [grafico,setGrafico]=useState(false);
+  const[boton,setBoton]= useState(true)
 
+
+const abrirGrafico=()=>{
+setGrafico(true)
+  }
+const cerrarGrafico=()=>{
+  setGrafico(false)
+  }
+  const verBoton=()=>{
+    setBoton(false)
+  }
+  const ocultarboton=()=>{
+    setBoton(true)
+  }  
+  const dosFunciones=()=>{
+    verBoton()
+    abrirGrafico()
+  }  
+  const resetFunciones=()=>{
+  
+    ocultarboton()
+    cerrarGrafico()
+  }
   const cerrarSesion=()=>{
     fire.auth().signOut();
   }; 
-
   const mostrardata=()=>{
     setMostrar(true)
-    }
-
+  }
   const abrirModal=()=>{
     setmodalAbierto(true);
-    }
-  
+  }  
   const cerrarModal=()=>{
     setmodalAbierto(false);
-    }
-    
+  }    
   const abrirVentana=()=>{
     setmostrarVentana(true);
-    }
-
+  }
   const cerrarVentana=()=>{
     setmostrarVentana(false);
-    }
+  }
+
+
+
 
   useEffect(()=>{     
     db.firestore().collection('dbcalidad')
@@ -146,8 +171,21 @@ function Navbar() {
 
 const filterNombre = data.map((x) => {
   let productor = '';
+  let jmz=0;
+
+
   switch (x.productor) {
-    case 'JORGE A. MARTINEZ ZUCCARDI': productor = 'JMZ'; break;
+
+    case 'JORGE A. MARTINEZ ZUCCARDI': productor = 'JMZ';  
+
+    
+    
+    
+    break;
+
+
+
+
     case 'ERNESTO FERNANDEZ E HIJOS': productor = 'EHF'; break;
     case 'Forestal San Ignacio S.R.L': productor = 'DIB'; break;
     case 'Sucesores de SALOMON JALIL s.r.l.': productor = 'JLI'; break;
@@ -155,10 +193,24 @@ const filterNombre = data.map((x) => {
     default:
       productor = x.productor;     
   }
+
+
+
  return (
   {text:productor,value: x.productor,}
  );
+
+
+
 });
+
+
+
+
+
+
+
+
 
 const filterFinca = data.map((x) => { 
 let finca = '';
@@ -217,6 +269,11 @@ let suma=(T5+T4+T3+T2+T1);
 let promCalidad=((T5 * 5 + T4 * 4 + T3 * 3 + T2 * 2 + T1)/suma).toFixed(2)
 let promCat1=(((suma-T3-T2-T1)*100)/suma).toFixed(0).toString();
 let promcat2=(((suma-T5-T4)*100)/suma).toFixed(0).toString();
+
+
+
+
+
 
 const columns = [ 
   {
@@ -340,27 +397,43 @@ const columns = [
   },  
 ];
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return( 
   <>      
     <div className="table-responsive">
+    <nav style={{ color: 'white', backgroundColor: '#1C2B36', height: 55, fontSize: 25, display:'flex', justifyContent:'space-around', flexDirection:'row'  }}>
+      
+    {boton?
+    <button className='btn' style={estiloBotonGrafico} onClick={()=>dosFunciones() }>{iconGrafico}</button>:
+    <button className='btn' style={estiloBotonGrafico} onClick={()=>resetFunciones()}>{iconbtn}</button>
+    }
 
-    <nav style={{ color: 'white', backgroundColor: '#1C2B36', height: 55, fontSize: 25, display:'flex', justifyContent:'space-around', flexDirection:'row'  }}>      
-    <button className='btn' style={estiloBotonGrafico} /*onClick={()=>abrirGrafico()}*/>{iconGrafico}</button>
-      <DatePicker style={{background:'white',height:'5vh',marginTop:'0.5vh',width:'9vw',borderRadius:'5px',padding:'2px'}}
-      value={fechaDesde} onChange={setFechaDesde}
-      />
-      <DatePicker style={{background:'white',height:'5vh',marginTop:'0.5vh',width:'9vw',borderRadius:'5px',padding:'2px'}}
-      value={fechaHasta} onChange={setFechaHasta}
-      />
+    <DatePicker style={{background:'white',height:'6vh',marginTop:'1.5vh',width:'9vw',borderRadius:'5px',padding:'2px'}}
+      value={fechaDesde} onChange={setFechaDesde} autoOk variant="inline" />
+
+    <DatePicker style={{background:'white',height:'6vh',marginTop:'1.5vh',width:'9vw',borderRadius:'5px',padding:'2px'}}
+      value={fechaHasta} onChange={setFechaHasta} autoOk variant="inline" />
+
+      
       <button className='btn'style={estiloBotonActualizar} onClick={(e) => { if (window.confirm('Hay ' + index_1 + ' Registros. Desea continuar?')) mostrardata() } }>{iconActualizar}</button>            
       <CSVLink data={data} separator={';'} filename={'Calidad.csv'} className='btn' style={estiloBotonExportar} > {iconExportar}  </CSVLink>
       <button className='btn'style={estiloBotonGaleria} onClick={()=>abrirModal()}>{iconImages}</button>
       <button className='btn'style={estiloBotonSalir} onClick={()=>cerrarSesion()}>{iconExit}</button>     
     </nav>
-
-
-
-
 
 
     <Modal 
@@ -371,13 +444,20 @@ const columns = [
       mostrarVentana={!mostrarVentana}
       cerrarVentana={cerrarVentana}/> 
 
-    <Grafico
+
+
+{grafico?
+<Grafico
       t5={resumenT5}
       t4={resumenT4}
       t3={resumenT3}
       t2={resumenT2}
       t1={resumenT1}
-      calidad={promCalidad}/>
+      calidad={promCalidad}
+      cerrarGrafico={cerrarGrafico}/>      
+      :''
+}
+    
       
     <Container
       datatest={data}
