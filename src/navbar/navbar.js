@@ -167,25 +167,33 @@ const cerrarGrafico=()=>{
       else{  
       } 
 });
+//https://matiashernandez.dev/blog/post/4-formas-de-eliminar-elementos-duplicados-en-un-arreglo-con-javascript
+//https://www.neoguias.com/como-encontrar-duplicados-array-javascript/
+let result=[]
+
+const filterNombre2 = data_1.map((x) => { 
+  let finca2 = '';
+  finca2=x.productor;
+  let value=''
+   return (
+  value= x.productor
+    );
+  });
+
+  const dataArr = new Set(filterNombre2);
+
+  result = [...dataArr];
+
+  console.log(result); 
 
 
-const filterNombre = data.map((x) => {
+
+
+
+const filterNombre = result.map((x) => {
   let productor = '';
-  let jmz=0;
-
-
   switch (x.productor) {
-
-    case 'JORGE A. MARTINEZ ZUCCARDI': productor = 'JMZ';  
-
-    
-    
-    
-    break;
-
-
-
-
+    case 'JORGE A. MARTINEZ ZUCCARDI': productor = 'JMZ'; break;
     case 'ERNESTO FERNANDEZ E HIJOS': productor = 'EHF'; break;
     case 'Forestal San Ignacio S.R.L': productor = 'DIB'; break;
     case 'Sucesores de SALOMON JALIL s.r.l.': productor = 'JLI'; break;
@@ -193,21 +201,49 @@ const filterNombre = data.map((x) => {
     default:
       productor = x.productor;     
   }
-
-
-
  return (
   {text:productor,value: x.productor,}
  );
-
-
-
 });
 
 
 
 
 
+
+
+
+
+
+/*
+
+    const result = filtroDeNombre.reduce((acc,item)=>{
+
+      if(acc.includes(item)){
+      	acc.push(item);
+      }
+      return acc;
+      
+    },[])
+
+
+
+
+
+
+
+    console.log(result); //[1,2,6,5,9,'33']
+
+
+
+    /*
+
+    const dataArr = new Set(filterNombre);
+
+    let result = [...dataArr];
+
+    console.log(result); 
+*/
 
 
 
@@ -242,6 +278,10 @@ data.forEach((item) => {
   T5 += parseInt(item.t5);
 });
 let resumenT5 = T5/data.length ;
+
+
+
+
 
 data.forEach((item) => {
   T4 += parseInt(item.t4);

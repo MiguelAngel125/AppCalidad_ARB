@@ -1,12 +1,12 @@
 import React,{useState} from 'react'
 import './ventanaFoto.css';
 import CloseIcon from '@material-ui/icons/Close';
-import imagen4 from  'C:/Users/desar/loginc/src/imgs/4.jpg';
+//import imagen4 from  'C:/Users/desar/loginc/src/imgs/4.jpg';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { FiRotateCcw } from "react-icons/fi";
 import { FiRotateCw } from "react-icons/fi";
 import '../Tabla_1/visualizador.css';
-//import imagen4 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/4.jpg';
+import imagen4 from 'C:/Users/macan/Desktop/respositorio calidad/AppCalidad_ARB/src/imgs/4.jpg';
 
 let estiloBotonSalir={width:45,height:45,color: "white"};
 let estiloBotonEliminar={width:60,height:60,backgroundColor:'rgba(0, 0, 0, 0)',color:'#fff',marginRight:-5,position:'absolute',display:'grid',marginTop:50}
